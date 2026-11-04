@@ -139,6 +139,8 @@ textarea{resize:vertical;min-height:60px}
 .page .subline{font-family:var(--fl);font-size:10pt;color:var(--grey);line-height:1.45}
 .page .contacts{font-family:var(--fl);font-size:9pt;color:var(--accent);line-height:1.4;margin-top:3pt}
 .page .contacts a,.page .contacts span{white-space:nowrap}
+.page .contacts .long{white-space:normal;overflow-wrap:anywhere}
+.page .contacts{overflow-wrap:anywhere}
 .page .contacts a{color:var(--accent);text-decoration:underline;-webkit-user-drag:none}
 .page .contacts .sep{color:var(--grey);margin:0 2.5pt}
 .page .cols{flex:1;display:grid;grid-template-columns:145pt 24pt 1fr;min-height:0}
@@ -648,8 +650,9 @@ function renderPage() {
   }
   const contacts = D.contacts.filter(c => c.text.trim()).map(c => {
     const h = hrefFor(c);
-    return h ? `<a href="${esc(h)}">${esc(c.text)}</a>` : `<span>${esc(c.text)}</span>`;
-  }).join('<span class="sep">·</span>');
+    const cls = c.text.trim().length > 42 ? ' class="long"' : ""; // very long links may wrap inside themselves
+    return h ? `<a href="${esc(h)}"${cls}>${esc(c.text)}</a>` : `<span${cls}>${esc(c.text)}</span>`;
+  }).join('<span class="sep">·</span><wbr>'); // <wbr>: the row may break between items
   const nodes = oneCol ? `<span class="node" style="left:0"></span><span class="node" style="left:100%"></span>`
               : L.sidebar === "right" ? `<span class="node" style="left:0"></span><span class="node" style="left:calc(100% - 157pt)"></span>`
               : `<span class="node" style="left:157pt"></span><span class="node" style="left:100%"></span>`;
