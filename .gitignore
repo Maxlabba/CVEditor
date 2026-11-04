@@ -1,0 +1,11 @@
+# Python
+__pycache__/
+*.pyc
+
+# Personal CV files – never commit your own CV or backups
+*.json
+!package.json
+
+# OS clutter
+.DS_Store
+Thumbs.db
