@@ -305,14 +305,14 @@ textarea{resize:vertical;min-height:60px}
 .btn.eye.off{color:var(--ui-red);border-color:rgba(229,96,90,.5)}
 
 @media print{
-  @page{size:A4;margin:0}
-  html,body{background:#fff;height:auto;display:block}
-  .bar,.panel,.warn,.stagehint{display:none!important}
+  @page{size:A4 portrait;margin:0}
+  html,body{background:#fff;height:auto!important;display:block!important;margin:0!important;padding:0!important;overflow:visible!important}
+  .bar,.panel,.warn,.stagehint,.bkwarn{display:none!important}
   .wrap{display:block}
   .stage{padding:0;background:#fff;overflow:visible;display:block}
   .scaler{transform:none!important;width:auto!important;height:auto!important;overflow:visible!important}
   #pages{transform:none!important}
-  .page{box-shadow:none;width:210mm;height:297mm;break-after:page;page-break-after:always}
+  .page{box-shadow:none;width:210mm;height:296.5mm;margin:0;break-after:page;page-break-after:always;break-inside:avoid;page-break-inside:avoid}
   .page:last-child{break-after:auto;page-break-after:auto}
   #pages{gap:0;display:block;width:auto}
   .modal{display:none!important}
@@ -1295,7 +1295,11 @@ document.addEventListener("keydown", ev => {
 });
 document.getElementById("bPrint").onclick = () => {
   if (document.getElementById("warn").classList.contains("show") && !confirm("Your CV doesn't fit on one page, so some text will be cut off. Print anyway?")) return;
-  const old = document.title; document.title = MODE === "letter" ? nameBase() + "_Cover_Letter" : fileBase(); window.print(); setTimeout(() => document.title = old, 500);
+  const old = document.title; document.title = MODE === "letter" ? nameBase() + "_Cover_Letter" : fileBase();
+  let framed = false; try { framed = window.self !== window.top; } catch (e) { framed = true; }
+  try { window.print(); } catch (e) { alert("Printing isn't available here. Press Ctrl+P (Cmd+P on Mac), or download the editor and open the file directly."); }
+  if (framed) flash("No print window? Download the editor and open the file directly");
+  setTimeout(() => document.title = old, 500);
 };
 document.querySelectorAll(".tab").forEach(t => t.onclick = () => {
   document.querySelectorAll(".tab").forEach(x => x.classList.toggle("on", x === t));
