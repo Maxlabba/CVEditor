@@ -21,8 +21,10 @@ html,body{margin:0;height:100%}
 body{background:var(--ui-bg);color:var(--ui-text);font:14px/1.45 "Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;display:flex;flex-direction:column}
 button,input,textarea,select{font:inherit;color:inherit}
 /* ---------- toolbar ---------- */
-.bar{display:flex;align-items:center;gap:8px;padding:10px 16px;background:var(--ui-panel);border-bottom:1px solid var(--ui-line);flex-wrap:wrap}
-.bar h1{font-size:16px;margin:0 14px 0 0;letter-spacing:.3px}
+.bar{display:flex;align-items:center;gap:6px;padding:10px 14px;background:var(--ui-panel);border-bottom:1px solid var(--ui-line);flex-wrap:wrap}
+.bar h1{font-size:16px;margin:0 8px 0 0;letter-spacing:.3px;white-space:nowrap}
+.bar .btn{padding:6px 10px;white-space:nowrap}
+.bar .btn.small{padding:3px 7px}
 .bar h1 span{color:var(--ui-amber)}
 .btn{background:var(--ui-card);border:1px solid var(--ui-line);border-radius:7px;padding:6px 12px;cursor:pointer}
 .btn:hover{border-color:var(--ui-amber)}
@@ -257,7 +259,10 @@ textarea{resize:vertical;min-height:60px}
 .page .letter .lsig{font-family:var(--fn);font-weight:700;font-size:calc(13pt * var(--dk));display:block;margin-top:calc(20pt * var(--sp))}
 #pages{display:flex;flex-direction:column;gap:28px;width:595.28pt}
 .vers{display:flex;gap:4px;align-items:center;margin-right:6px;padding-right:10px;border-right:1px solid var(--ui-line)}
-.vers select{width:auto;max-width:190px;padding:5px 8px}
+.vers select{width:auto;max-width:160px;padding:5px 8px}
+.vers{margin-right:2px;padding-right:8px}
+.mode button{padding:6px 11px!important}
+@media (max-width:1300px){.bar h1 span{display:none}.vers select{max-width:130px}}
 .modal{position:fixed;inset:0;background:rgba(5,10,20,.65);display:flex;align-items:center;justify-content:center;z-index:50}
 .modal[hidden]{display:none}
 .mbox{background:var(--ui-panel);border:1px solid var(--ui-line);border-radius:12px;padding:18px;width:min(760px,92vw);max-height:90vh;display:flex;flex-direction:column}
@@ -275,6 +280,9 @@ textarea{resize:vertical;min-height:60px}
 .kwctx mark{background:rgba(245,176,65,.3);color:#fff;border-radius:3px;padding:0 2px}
 .chip.sel{box-shadow:0 0 0 2px var(--ui-amber)}
 .mbox.small{width:min(560px,92vw)}
+#dlg{z-index:70}
+#dlg .dinp{margin:4px 0 6px}
+.btn.primary.red{background:var(--ui-red);border-color:var(--ui-red);color:#fff}
 .mbox p{margin:6px 0 10px}
 .bkinfo{background:#0e1830;border:1px solid var(--ui-line);border-radius:8px;padding:8px 12px;margin:6px 0 10px;font-size:13px;color:var(--ui-dim)}
 .bkinfo b{color:var(--ui-text)}
@@ -297,6 +305,27 @@ textarea{resize:vertical;min-height:60px}
 .chk-item.fix .lv{color:var(--ui-red)} .chk-item.warn .lv{color:var(--ui-amber)} .chk-item.tip .lv{color:#8fb6ee}
 .chk-item .m{flex:1}
 .chk-item .m small{display:block;color:var(--ui-dim);margin-top:2px}
+.score-card{background:var(--ui-card);border:1px solid var(--ui-line);border-radius:12px;padding:12px 14px;margin:10px 0 6px}
+.score-top{display:flex;align-items:baseline;gap:12px;margin-bottom:8px}
+.score-big{font-size:40px;font-weight:800;line-height:1}
+.score-big span{font-size:15px;font-weight:600;color:var(--ui-dim);margin-left:2px}
+.score-lbl{font-weight:700;font-size:15px}
+.g4 .score-big,.g4 .score-lbl{color:#4fd18b} .g3 .score-big,.g3 .score-lbl{color:#8fd14f} .g2 .score-big,.g2 .score-lbl{color:var(--ui-amber)} .g1 .score-big,.g1 .score-lbl{color:var(--ui-red)}
+.cat{display:grid;grid-template-columns:140px 1fr 44px;align-items:center;gap:8px;font-size:12.5px;margin:5px 0;color:var(--ui-dim)}
+.cb{height:7px;background:#0e1830;border-radius:99px;overflow:hidden}
+.cb i{display:block;height:100%;background:var(--ui-amber);border-radius:99px}
+.cv{text-align:right;color:var(--ui-text)}
+.cat.off{opacity:.55}
+.chk-h{font-weight:700;margin:14px 0 2px}
+.chk-item .pts{font-weight:700;color:var(--ui-amber);font-size:13px;margin-left:6px;white-space:nowrap}
+.chk-item.info{border-left-color:#5f6f8f;cursor:default}
+.chk-item.info[data-go]{cursor:pointer}
+.chk-item.info .lv{color:#9fb0cf}
+.srcs{margin-top:14px;background:var(--ui-card);border:1px solid var(--ui-line);border-radius:10px;padding:8px 12px;font-size:13px}
+.srcs summary{cursor:pointer;font-weight:600}
+.srcs p,.srcs li{color:var(--ui-dim);line-height:1.5}
+.srcs ul{padding-left:18px;margin:6px 0}
+.badge.g4,.badge.g3{background:var(--ui-green)} .badge.g2{background:#b7801c} .badge.g1{background:var(--ui-red)}
 .chk-good{background:rgba(63,182,122,.12);border:1px solid var(--ui-green);color:#a9ecc8;border-radius:8px;padding:10px 12px;margin-top:10px}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(245,176,65,.0)}50%{box-shadow:0 0 0 6px rgba(245,176,65,.45)}}
 .btn.pulse{animation:pulse .85s ease-in-out 3}
@@ -332,13 +361,12 @@ textarea{resize:vertical;min-height:60px}
     <button class="btn small" id="vRen" title="Rename this version">Rename</button>
     <button class="btn small danger" id="vDel" title="Delete this version">Delete</button>
   </div>
-  <button class="btn" id="bNew" title="Start a new, empty CV version">New</button>
-  <button class="btn" id="bSample" title="Add the example CV as a new version">Example</button>
-  <button class="btn" id="bLoad" title="Open a saved .json CV file">Open…</button>
+  <button class="btn" id="bNew" title="Start a new version: blank, from the example, or import an existing CV">New…</button>
+  <button class="btn" id="bLoad" title="Open a .json draft, or import a PDF">Open…</button>
   <button class="btn" id="bSave" title="Downloads an editable draft (.json) you can open in this editor later. To get a CV you can send, use Save as PDF.">Save draft</button>
   <button class="btn" id="bBackup" title="Back up or restore all your versions at once">Backup</button>
   <button class="btn" id="bUndo" title="Undo (Ctrl+Z)" disabled>↶ Undo</button>
-  <input type="file" id="fileIn" accept=".json,application/json" hidden>
+  <input type="file" id="fileIn" accept=".json,application/json,.pdf,application/pdf" hidden>
   <div class="mode" id="mode"><button data-m="cv" class="on">CV</button><button data-m="letter">Cover letter</button></div>
   <span class="spacer"></span>
   <span class="status" id="status"></span>
@@ -347,7 +375,7 @@ textarea{resize:vertical;min-height:60px}
 </div>
 <div class="wrap">
   <div class="panel">
-    <div class="tabs"><div class="tab on" data-tab="edit">Edit</div><div class="tab" data-tab="chk">Checks <span class="badge" id="chkBadge" hidden></span></div><div class="tab" data-tab="kw">Keywords</div><div class="tab" data-tab="help">Help</div></div>
+    <div class="tabs"><div class="tab on" data-tab="edit">Edit</div><div class="tab" data-tab="chk">Review <span class="badge" id="chkBadge" hidden></span></div><div class="tab" data-tab="kw">Keywords</div><div class="tab" data-tab="help">Help</div></div>
     <div class="pane" id="pEdit"></div>
     <div class="pane" id="pKw" hidden>
       <div class="hint">Paste a job posting below and the results appear straight away: the terms the posting repeats or emphasises, and which of them are already in your CV. Edit your CV and come back to this tab to see the list update.</div>
@@ -356,16 +384,17 @@ textarea{resize:vertical;min-height:60px}
       <div id="kwOut"></div>
     </div>
     <div class="pane" id="pChk" hidden>
-      <div class="hint">Common things recruiters notice. The list updates as you edit; click an item to jump to it.</div>
+      <div class="hint">A score out of 100 based on research into how recruiters read CVs. It updates as you edit; click an item to jump to it.</div>
       <div id="chkOut"></div>
     </div>
     <div class="pane" id="pHelp" hidden>
       <div class="card" style="padding:12px 14px">
-        <p><b>Save as PDF</b> (the yellow button) makes the CV you send to employers. <b>Save draft</b> downloads an editable .json file that only this editor can open, so you can keep working on it later.</p>
+        <p><b>Save as PDF</b> (the yellow button) makes the CV you send to employers. <b>Save draft</b> downloads an editable .json file you can open here later and continue exactly where you left off.</p>
+        <p><b>Import:</b> bring in an existing CV from a PDF (Word, Google Docs, CV websites or this editor) or pasted text. It becomes a new version with the sections filled in as well as the editor can tell; always check the result. A .json draft restores a CV exactly, an import is a best guess, so keep your drafts.</p>
         <p><b>Everything stays on your computer.</b> Nothing is uploaded anywhere. Your work is also kept in this browser automatically, but use <b>Save draft</b> to keep a copy you can move, back up or reuse for another job.</p>
         <p><b>Making the PDF:</b> click <b>Save as PDF / Print</b> and choose <i>Save as PDF</i> (or <i>Microsoft Print to PDF</i>) as the printer. Set margins to <i>None</i> or <i>Default</i> and keep <i>Background graphics</i> on if your browser asks. Links stay clickable in the PDF.</p>
         <p><b>Drag and drop:</b> in the preview, grab a section, an entry or a single bullet and drop it where you want it. Sections can move between the two columns. Click anything in the preview to jump to it in the editor. Made a mistake? <b>Undo</b> or Ctrl+Z.</p>
-        <p><b>Checks:</b> the Checks tab looks for common mistakes: missing contact details, leftover example text, missing or inconsistent dates, long or "I"-first bullets, empty sections and overflow. Click an item to jump to it.</p>
+        <p><b>Review:</b> a score out of 100 based on research into how recruiters read CVs, split into first glance, complete information, easy to scan, length, consistency and tailoring. Each tip shows how many points it's worth; click it to jump to the field. "Where the score comes from" at the bottom lists the research.</p>
         <p><b>Backup:</b> versions are stored in this browser only. Use <b>Backup</b> to download all of them in one file, and to restore them on another computer or browser.</p>
         <p><b>Versions:</b> keep one version per job with the dropdown at the top left. <b>Duplicate</b> copies the current version so you can tailor it, and <b>Open…</b> adds a saved file as a new version. Versions live in this browser, so use <b>Save draft</b> for backups.</p>
         <p><b>Two pages:</b> under Layout &amp; style choose <b>Two pages</b>, then send sections to page 2 with the button on each section or by dragging them onto page 2.</p>
@@ -397,23 +426,42 @@ textarea{resize:vertical;min-height:60px}
   <p class="hint">Your versions are stored in this browser only. Clearing browser data, using another computer or another browser means they're not there. A backup file keeps all of them safe.</p>
   <div class="bkinfo" id="bkInfo"></div>
   <div class="addrow"><button class="btn primary" id="bkExport">Download backup of all versions</button></div>
-  <div class="addrow"><button class="btn" id="bkImport">Restore from a backup file…</button><input type="file" id="bkIn" accept=".json,application/json" hidden></div>
+  <div class="addrow"><button class="btn" id="bkImport">Restore from a backup file…</button><input type="file" id="bkIn" accept=".json,application/json,.pdf,application/pdf" hidden></div>
   <p class="hint">Restoring adds the versions from the file next to the ones you already have. Nothing is overwritten.</p>
   <div class="addrow"><span class="spacer"></span><button class="btn" id="bkClose">Close</button></div>
 </div></div>
 <div class="modal" id="welcome" hidden><div class="mbox small">
-  <h2>Welcome to <span style="color:var(--ui-amber)">CV Editor</span></h2>
-  <p>Make a CV and a matching cover letter, pick a design, and save it as a PDF. Everything stays on your computer.</p>
+  <h2 id="wTitle">Welcome to <span style="color:var(--ui-amber)">CV Editor</span></h2>
+  <p id="wIntro">Make a CV and a matching cover letter, pick a design, and save it as a PDF. Everything stays on your computer.</p>
   <div class="wgrid">
     <button class="wbtn" data-w="example"><b>Start from the example</b><span>See how it works, then replace the text with yours.</span></button>
     <button class="wbtn" data-w="blank"><b>Start blank</b><span>An empty CV with the basic sections.</span></button>
-    <button class="wbtn" data-w="open"><b>Open a saved file</b><span>A CV or backup saved from this editor.</span></button>
+    <button class="wbtn" data-w="import"><b>Import my existing CV</b><span>From a PDF (Word, Google Docs, a CV site) or pasted text.</span></button>
+    <button class="wbtn" data-w="open"><b>Open a saved draft</b><span>A .json draft or backup saved from this editor.</span></button>
   </div>
   <ul class="wtips">
     <li><b>Drag</b> sections, jobs and bullets around in the preview. Click anything to edit it.</li>
     <li><b>Save as PDF</b> when you're done. Choose "Save as PDF" as the printer.</li>
     <li>Use <b>Backup</b> now and then, so your work is safe if the browser is cleared.</li>
   </ul>
+</div></div>
+<div class="modal" id="pdfModal" hidden><div class="mbox small">
+  <h2>Import an existing CV</h2>
+  <p>Choose a PDF of your CV, from Word, Google Docs, a CV website or this editor, and the sections are filled in for you as a new version. It's a best guess, so check each section afterwards.</p>
+  <div class="addrow"><button class="btn primary" id="impPick">Choose a PDF…</button><input type="file" id="impIn" accept=".pdf,application/pdf" hidden></div>
+  <p class="hint" style="margin-top:12px">No PDF? Copy all the text from your old CV (Ctrl+A, Ctrl+C in Word) and paste it here:</p>
+  <textarea id="impText" rows="6" placeholder="Paste the text of your CV here…"></textarea>
+  <div class="addrow"><button class="btn" id="impTextGo">Import pasted text</button><span class="spacer"></span><button class="btn" id="pdfClose">Close</button></div>
+  <p class="hint">The file is read here in your browser; nothing is uploaded. Have a <b>.json</b> draft from this editor? Use <b>Open…</b> instead: it restores everything exactly.</p>
+</div></div>
+<div class="modal" id="impDone" hidden><div class="mbox small">
+  <h2 id="impTitle">Imported</h2>
+  <div id="impSum"></div>
+  <div class="addrow"><button class="btn primary" id="impReview">Check it in Review</button><span class="spacer"></span><button class="btn" id="impClose">Close</button></div>
+</div></div>
+<div class="modal" id="dlg" hidden><div class="mbox small" role="dialog" aria-modal="true">
+  <h2></h2><p class="dmsg"></p><input type="text" class="dinp" hidden>
+  <div class="addrow"><span class="spacer"></span><button class="btn dcancel">Cancel</button><button class="btn primary dok">OK</button></div>
 </div></div>
 <div class="modal" id="txtModal" hidden><div class="mbox">
   <h2 id="txtTitle">Plain-text version</h2>
@@ -777,8 +825,8 @@ document.getElementById("pages").addEventListener("click", ev => {
 });
 
 /* ======================= editor ======================= */
-function inp(path, ph = "", extra = "") { return `<input type="text" data-p="${path}" value="${esc(getP(path))}" placeholder="${esc(ph)}" ${extra}>`; }
-function ta(path, ph = "", rows = 3) { return `<textarea data-p="${path}" rows="${rows}" placeholder="${esc(ph)}">${esc(getP(path))}</textarea>`; }
+function inp(path, ph = "", extra = "") { return `<input type="text" spellcheck="true" data-p="${path}" value="${esc(getP(path))}" placeholder="${esc(ph)}" ${extra}>`; }
+function ta(path, ph = "", rows = 3) { return `<textarea spellcheck="true" data-p="${path}" rows="${rows}" placeholder="${esc(ph)}">${esc(getP(path))}</textarea>`; }
 function ctl(arr, i, n, extra = "") {
   return `<span class="ctrls">${extra}<button class="btn icon" data-a="up" data-arr="${arr}" data-i="${i}" title="Move up" ${i === 0 ? "disabled" : ""}>↑</button>` +
          `<button class="btn icon" data-a="down" data-arr="${arr}" data-i="${i}" title="Move down" ${i === n - 1 ? "disabled" : ""}>↓</button>` +
@@ -1030,13 +1078,13 @@ pE.addEventListener("click", ev => {
   if (a === "design") { snapshot(); D.layout.design = b.dataset.v; return changed(true); }
   const arr = getP(b.dataset.arr), i = Number(b.dataset.i);
   if (a === "xcol") { const to = b.dataset.arr === "main" ? "side" : "main"; return moveItem(b.dataset.arr, i, to, getP(to).length); }
-  if (a === "del" && typeof arr[i] === "object" && !confirm("Remove this?")) return;
   snapshot();
   if (a === "add") arr.push(TPL[b.dataset.tpl]());
   else if (a === "del") arr.splice(i, 1);
   else if (a === "up" && i > 0) [arr[i - 1], arr[i]] = [arr[i], arr[i - 1]];
   else if (a === "down" && i < arr.length - 1) [arr[i + 1], arr[i]] = [arr[i], arr[i + 1]];
   changed(true);
+  if (a === "del" && typeof arr[i] !== "string") flash("Removed – click Undo (Ctrl+Z) to bring it back");
   if (a === "add") { const f = document.querySelector(`[data-p^="${b.dataset.arr}.${arr.length - 1}"]`); if (f) f.focus(); }
 });
 function loadImage(f) {
@@ -1051,19 +1099,18 @@ function loadImage(f) {
       const jpg = /jpe?g/i.test(f.type);
       snapshot();
       D.top.src = cv.toDataURL(jpg ? "image/jpeg" : "image/png", 0.9);
-      Object.assign(D.top, { iw: cv.width, ih: cv.height, zoom: 1, px: 50, py: jpg ? 35 : 50 });
+      Object.assign(D.top, { iw: cv.width, ih: cv.height, zoom: 1, px: 50, py: jpg ? 35 : 50, isPhoto: jpg });
       if (jpg && D.top.shape === "round") D.top.shape = "portrait"; // photos usually look best in a portrait frame
       changed(true);
     };
-    img.onerror = () => alert("That image couldn't be read. Try a PNG or JPG.");
+    img.onerror = () => tell("That image couldn't be read. Try a PNG or JPG.");
     img.src = r.result;
   };
   r.readAsDataURL(f);
 }
 
 /* ======================= toolbar ======================= */
-document.getElementById("bNew").onclick = () => addVersion("New CV", BLANK());
-document.getElementById("bSample").onclick = () => addVersion("Example CV", normalize(clone(EXAMPLE)));
+
 document.getElementById("ver").onchange = ev => {
   store(); const v = V.list.find(x => x.id === ev.target.value); if (!v) return;
   V.cur = v.id; D = normalize(v.data); HIST.length = 0; document.getElementById("bUndo").disabled = true; changed(true); renderVer(); flash("Switched to " + v.name);
@@ -1071,19 +1118,82 @@ document.getElementById("ver").onchange = ev => {
 document.getElementById("vDup").onclick = () => { const cur = V.list.find(x => x.id === V.cur); addVersion((cur ? cur.name : "CV") + " copy", clone(D)); };
 document.getElementById("vRen").onclick = () => {
   const v = V.list.find(x => x.id === V.cur); if (!v) return;
-  const n = prompt("Name this version, for example the job it's for:", v.name); if (!n || !n.trim()) return;
-  v.name = n.trim(); saveV(); renderVer();
+  askText("Rename version", "Name this version, for example the job it's for:", v.name).then(n => {
+    if (!n || !n.trim()) return;
+    v.name = n.trim(); saveV(); renderVer(); flash("Renamed");
+  });
 };
 document.getElementById("vDel").onclick = () => {
   if (V.list.length < 2) return;
   const v = V.list.find(x => x.id === V.cur);
-  if (!confirm(`Delete "${v.name}"? Use Save draft first if you might want it back.`)) return;
-  V.list = V.list.filter(x => x.id !== V.cur); V.cur = V.list[0].id; D = normalize(V.list[0].data);
-  HIST.length = 0; saveV(); changed(true); renderVer();
+  ask(`Delete "${v.name}"?`, "This can't be undone. Use Save draft first if you might want it back.", "Delete", true).then(ok => {
+    if (!ok) return;
+    V.list = V.list.filter(x => x.id !== v.id); V.cur = V.list[0].id; D = normalize(V.list[0].data);
+    HIST.length = 0; document.getElementById("bUndo").disabled = true; saveV(); changed(true); renderVer(); flash(`Deleted "${v.name}"`);
+  });
 };
 document.getElementById("bLoad").onclick = () => document.getElementById("fileIn").click();
+
+const isPdf = f => /\.pdf$/i.test(f.name) || f.type === "application/pdf";
+const pdfM = document.getElementById("pdfModal"), impD = document.getElementById("impDone");
+function openImport() { pdfM.hidden = false; }
+function explainPdf() { pdfM.hidden = false; }
+document.getElementById("pdfClose").onclick = () => pdfM.hidden = true;
+pdfM.addEventListener("click", ev => { if (ev.target === pdfM) pdfM.hidden = true; });
+impD.addEventListener("click", ev => { if (ev.target === impD) impD.hidden = true; });
+document.getElementById("impClose").onclick = () => impD.hidden = true;
+document.getElementById("impReview").onclick = () => { impD.hidden = true; document.querySelector('.tab[data-tab="chk"]').click(); };
+document.getElementById("impPick").onclick = () => document.getElementById("impIn").click();
+document.getElementById("impIn").onchange = ev => { const f = ev.target.files[0]; ev.target.value = ""; if (f) importPdf(f); };
+document.getElementById("impTextGo").onclick = () => {
+  const t = document.getElementById("impText").value;
+  if (t.trim().length < 40) return flash("Paste the whole CV first");
+  let r; try { r = CVImport.fromText(t); } catch (e) { r = { error: "failed" }; }
+  finishImport(r, "Pasted CV", true);
+};
+function importPdf(f) {
+  flash("Reading " + f.name + "…");
+  const rd = new FileReader();
+  rd.onload = () => {
+    let r;
+    try { r = CVImport.fromPdf(rd.result); }
+    catch (e) { r = { error: e && e.message === "encrypted" ? "encrypted" : e && e.message === "not-pdf" ? "not-pdf" : "failed" }; console.error(e); }
+    finishImport(r, f.name.replace(/\.pdf$/i, "").replace(/[_]+/g, " "), false);
+  };
+  rd.readAsArrayBuffer(f);
+}
+function finishImport(r, label, pasted) {
+  const msgs = {
+    "no-text": "This PDF has no text the editor can read. It's probably a scan or a picture of a CV. Paste the text instead, or type it in.",
+    "encrypted": "This PDF is password-protected, so it can't be read. Save an unprotected copy, or paste the text instead.",
+    "not-pdf": "That file isn't a PDF.",
+    "no-structure": "No CV sections were found in this text.",
+    "failed": "Something went wrong reading this file. Paste the text instead."
+  };
+  if (!r || r.error) { pdfM.hidden = false; tell(msgs[(r && r.error) || "failed"], "Couldn't import"); return; }
+  const src = r.data, d = BLANK();
+  d.name = src.name || "Your Name"; d.headline = src.headline; d.subline = src.subline; d.contacts = src.contacts.length ? src.contacts : d.contacts;
+  d.profile = src.profile; d.profileTitle = src.profileTitle || "Profile";
+  const mk = x => SEC(x.title, x.kind, { entries: x.entries.map(e => ENT(e.org, e.place, e.role, e.dates, e.bullets, e.minor)), items: x.items, text: x.text });
+  d.main = src.main.map(mk); d.side = src.side.map(mk);
+  if (src.top) d.top = Object.assign(d.top, { mode: "box", boxTitle: src.top.boxTitle, boxLines: src.top.boxLines });
+  if (!d.side.length) d.layout.sidebar = "none";
+  pdfM.hidden = true; document.getElementById("impText").value = "";
+  addVersion("Imported – " + (src.name || label), normalize(d));
+  const st = r.stats, list = [];
+  list.push(`<li><b>${esc(d.name)}</b>${d.headline ? " – " + esc(d.headline) : ""}</li>`);
+  list.push(`<li>${st.contacts} contact detail${st.contacts === 1 ? "" : "s"}${d.profile ? ", a profile" : ""}</li>`);
+  list.push(`<li>${st.sections} section${st.sections === 1 ? "" : "s"} with ${st.entries} job${st.entries === 1 ? "" : "s"} and schools</li>`);
+  if (src.top) list.push(`<li>a text box: "${esc(src.top.boxTitle)}"</li>`);
+  document.getElementById("impTitle").textContent = "Imported as a new version";
+  document.getElementById("impSum").innerHTML = `<p>Found:</p><ul class="wtips">${list.join("")}</ul>
+    <p class="hint" style="margin-top:10px"><b>Please check:</b> that each job has the right company, job title and dates; that bullet points weren't split or merged; and that nothing is missing${st.twoCol ? " – two-column PDFs are the hardest to read in the right order" : ""}. Photos, logos and colours aren't imported, so pick a design and add an image if you want one.</p>
+    <p class="hint">Your old version is untouched: switch back with the version list at the top left.</p>`;
+  impD.hidden = false;
+}
 document.getElementById("fileIn").onchange = ev => {
   const f = ev.target.files[0]; if (!f) return;
+  if (isPdf(f)) { ev.target.value = ""; return importPdf(f); }
   const r = new FileReader();
   r.onload = () => importAny(r.result, f.name);
   r.readAsText(f); ev.target.value = "";
@@ -1109,6 +1219,31 @@ document.getElementById("bSave").onclick = () => {
 };
 document.getElementById("bUndo").onclick = undo;
 
+/* ---------- in-page dialogs: the browser's own confirm/prompt/alert boxes are silently blocked in some previews ---------- */
+function uiDialog({ title = "", msg = "", ok = "OK", cancel = "Cancel", input = null, danger = false }) {
+  return new Promise(res => {
+    const dlg = document.getElementById("dlg"), inp = dlg.querySelector(".dinp"), okB = dlg.querySelector(".dok"), cB = dlg.querySelector(".dcancel");
+    dlg.querySelector("h2").textContent = title; dlg.querySelector("h2").hidden = !title;
+    dlg.querySelector(".dmsg").textContent = msg;
+    inp.hidden = input === null; inp.value = input || "";
+    okB.textContent = ok; okB.classList.toggle("red", danger);
+    cB.hidden = cancel === null; cB.textContent = cancel || "";
+    dlg.hidden = false;
+    setTimeout(() => { if (input !== null) { inp.focus(); inp.select(); } else okB.focus(); }, 0);
+    const done = v => { dlg.hidden = true; okB.onclick = cB.onclick = dlg.onclick = dlg.onkeydown = null; res(v); };
+    okB.onclick = () => done(input !== null ? inp.value : true);
+    cB.onclick = () => done(input !== null ? null : false);
+    dlg.onclick = e => { if (e.target === dlg) cB.onclick(); };
+    dlg.onkeydown = e => {
+      if (e.key === "Escape") { e.stopPropagation(); cancel === null ? okB.onclick() : cB.onclick(); }
+      if (e.key === "Enter" && input !== null) { e.preventDefault(); okB.onclick(); }
+    };
+  });
+}
+const ask = (title, msg, ok, danger) => uiDialog({ title, msg, ok, danger });
+const tell = (msg, title) => uiDialog({ title: title || "", msg, cancel: null });
+const askText = (title, msg, value) => uiDialog({ title, msg, input: value, ok: "Save" });
+
 /* ---------- backup of all versions ---------- */
 const bk = document.getElementById("bkModal");
 const fmtDate = t => t ? new Date(t).toLocaleString("en-GB", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" }) : "never";
@@ -1131,13 +1266,14 @@ document.getElementById("bkExport").onclick = () => {
 document.getElementById("bkImport").onclick = () => document.getElementById("bkIn").click();
 document.getElementById("bkIn").onchange = ev => {
   const f = ev.target.files[0]; if (!f) return;
+  if (isPdf(f)) { ev.target.value = ""; bk.hidden = true; return importPdf(f); }
   const r = new FileReader();
   r.onload = () => { importAny(r.result, f.name); bk.hidden = true; };
   r.readAsText(f); ev.target.value = "";
 };
 function importAny(text, fname) {
   // accepts a full backup (several versions) or a single saved CV
-  let o; try { o = JSON.parse(text); } catch (e) { return alert("That file isn't from this editor."); }
+  let o; try { o = JSON.parse(text); } catch (e) { return tell("That file isn't a draft or backup from this editor.", "Couldn't open"); }
   if (o && o.type === "cv-editor-backup" && Array.isArray(o.versions)) {
     store();
     let first = null;
@@ -1146,7 +1282,7 @@ function importAny(text, fname) {
     flash(`Restored ${o.versions.length} version${o.versions.length === 1 ? "" : "s"}`);
     return;
   }
-  let nd; try { nd = normalize(o); } catch (e) { return alert("That file isn't from this editor."); }
+  let nd; try { nd = normalize(o); } catch (e) { return tell("That file isn't a draft or backup from this editor.", "Couldn't open"); }
   addVersion(String(fname || "CV").replace(/\.json$/i, "").replace(/_/g, " "), nd);
   flash("Opened " + fname + " as a new version");
 }
@@ -1158,82 +1294,167 @@ function checkBackupNag() {
 document.getElementById("bkNow").onclick = openBackup;
 document.getElementById("bkLater").onclick = () => { nagSnooze = Date.now() + 2 * 3600e3; checkBackupNag(); };
 
-/* ---------- health check ---------- */
+/* ---------- CV review: research-based score + checks ---------- */
+// Categories and their share of the 100 points. Weights follow the research summarised under "Where the score comes from".
+const CATS = [
+  ["glance", "First glance", 25, "What a recruiter sees in the first few seconds: headline, profile and job titles."],
+  ["info", "Complete & correct", 25, "Contact details, dates and no leftover example text."],
+  ["scan", "Easy to scan", 20, "Short bullets, clear sections, nothing empty."],
+  ["fit", "Length & fit", 15, "Fits the page and isn't longer than it needs to be."],
+  ["polish", "Consistency", 10, "Dates, dashes and bullets written the same way throughout."],
+  ["tailor", "Tailored to the job", 5, "How many of the job posting's key terms appear in your CV."]
+];
 const PLACEHOLDERS = [/^your name$/i, /^phone$/i, /email@example\.com/i, /\bexample\b/i, /^your title or current studies$/i, /^new section$/i];
-function checks() {
-  const out = [], add = (lv, msg, why, go) => out.push({ lv, msg, why, go });
+const NOW_RE = /\b(now|present|current|today|ongoing|nu|pågående)\b/i;
+function contentFill(el) { // share of a column actually used by content (0..1+)
+  if (!el || !el.clientHeight) return 0;
+  const kids = [...el.children].filter(k => k.offsetHeight); if (!kids.length) return 0;
+  const last = kids[kids.length - 1], top = el.getBoundingClientRect().top, bottom = last.getBoundingClientRect().bottom;
+  const k = el.getBoundingClientRect().height / el.clientHeight || 1; // undo preview scaling
+  return (bottom - top) / k / el.clientHeight;
+}
+function review() {
+  const out = [], add = (lv, cat, pts, msg, why, go) => out.push({ lv, cat, pts, msg, why, go });
   const visSecs = g => D[g].map((s, i) => ({ s, path: `${g}.${i}` })).filter(x => !x.s.hidden);
   const allSecs = visSecs("main").concat(visSecs("side"));
-  // contact details
+  const ents = []; allSecs.forEach(({ s, path }) => { if (s.kind === "entries") s.entries.forEach((e, ei) => { if (!e.hidden) ents.push({ e, go: `${path}.entries.${ei}`, sec: s }); }); });
+  const bullets = []; ents.forEach(({ e, go }) => e.bullets.forEach(b => b.trim() && bullets.push({ t: b.trim(), go })));
+  allSecs.forEach(({ s, path }) => { if (s.kind === "bullets") s.items.forEach(b => b.trim() && bullets.push({ t: b.trim(), go: path, skill: true })); });
+  const workBullets = bullets.filter(b => !b.skill);
+
+  // ---- first glance (Ladders: headline/summary at the top, job titles are looked at most) ----
+  if (!D.headline.trim()) add("warn", "glance", 7, "No headline under your name", "One line such as \"IT Technician · CompTIA A+\" tells the reader what you are in the first seconds.", "card:head");
+  if (!D.profile.trim()) add("warn", "glance", 9, "No profile", "A short summary at the top is one of the first things recruiters read. Three to five lines is enough.", "card:prof");
+  else {
+    const p = document.querySelector("#pages .prof"); const lines = p ? Math.round(p.offsetHeight / parseFloat(getComputedStyle(p).lineHeight)) : 0;
+    if (lines > 6) add("warn", "glance", 4, `Profile is ${lines} lines long`, "Recruiters skim. Aim for three to five lines and move details into your experience.", "card:prof");
+    else if (lines && lines < 2) add("tip", "glance", 2, "Profile is very short", "Two to five lines: what you are, what you're good at, and what you're looking for.", "card:prof");
+  }
+  const noTitle = ents.filter(x => x.e.org && !x.e.role.trim());
+  if (noTitle.length) add("warn", "glance", Math.min(9, noTitle.length * 3), `${noTitle.length} entr${noTitle.length > 1 ? "ies have" : "y has"} no job title or programme`, "Job titles are what recruiters' eyes go to most. Fill in Role / programme.", noTitle[0].go);
+
+  // ---- complete & correct (GSM London poll: missing contact details or dates annoy 74%) ----
   const ct = D.contacts.map(c => c.text.trim()).filter(Boolean);
-  if (!ct.some(t => /@/.test(t))) add("fix", "No email address", "Recruiters need a way to reply. Add it under Name & contact.", "card:head");
-  if (!ct.some(t => /\d[\d\s\-()]{6,}/.test(t))) add("warn", "No phone number", "Most recruiters call before they email.", "card:head");
-  if (!D.headline.trim()) add("tip", "No headline under your name", "One line such as \"IT Technician · CompTIA A+\" tells the reader what you are in two seconds.", "card:head");
-  // leftover placeholder text
+  if (!ct.some(t => /@/.test(t))) add("fix", "info", 9, "No email address", "Recruiters need a way to reply. Add it under Name & contact.", "card:head");
+  if (!ct.some(t => /\d[\d\s\-()]{6,}/.test(t))) add("warn", "info", 5, "No phone number", "Most recruiters call before they email.", "card:head");
   const ph = [];
   const chkPH = (t, go) => { if (t && PLACEHOLDERS.some(r => r.test(t.trim()))) ph.push([t.trim(), go]); };
   chkPH(D.name, "card:head"); chkPH(D.headline, "card:head"); D.contacts.forEach(c => chkPH(c.text, "card:head"));
-  allSecs.forEach(({ s, path }) => { chkPH(s.title, path); s.entries.forEach((e, ei) => { if (!e.hidden) { chkPH(e.org, `${path}.entries.${ei}`); chkPH(e.place, `${path}.entries.${ei}`); } }); });
-  ph.slice(0, 4).forEach(([t, go]) => add("fix", `Placeholder text left in: "${t}"`, "Replace it with your own details before you send the CV.", go));
-  // profile
-  if (!D.profile.trim()) add("warn", "No profile", "A short summary at the top is the first thing recruiters read. Three to five lines is enough.", "card:prof");
-  else {
-    const p = document.querySelector("#pages .prof"); const lines = p ? Math.round(p.offsetHeight / parseFloat(getComputedStyle(p).lineHeight)) : 0;
-    if (lines > 6) add("warn", `Profile is ${lines} lines long`, "Recruiters skim. Aim for three to five lines and move details into your experience.", "card:prof");
-  }
-  // entries: dates, bullets
-  const dateStyles = new Set(), nowWords = new Set(), dashes = new Set();
-  const firstPerson = [], longB = [], dupB = new Map();
+  allSecs.forEach(({ s, path }) => chkPH(s.title, path)); ents.forEach(({ e, go }) => { chkPH(e.org, go); chkPH(e.place, go); });
+  ph.slice(0, 4).forEach(([t, go]) => add("fix", "info", 5, `Example text left in: "${t}"`, "Replace it with your own details before you send the CV.", go));
+  const noDates = ents.filter(x => (x.e.org || x.e.role) && !x.e.dates.trim());
+  if (noDates.length) add("warn", "info", Math.min(9, noDates.length * 3), `${noDates.length} entr${noDates.length > 1 ? "ies have" : "y has"} no dates`, "Recruiters use dates to follow your timeline.", noDates[0].go);
+  // timeline gaps (GU recruiter panel: recruiters check for gaps) – years from entries and from text like "(2009–2010)"
+  const yNow = new Date().getFullYear(), iv = [];
+  const addRange = txt => { const ys = (String(txt).match(/\b(19[5-9]\d|20[0-4]\d)\b/g) || []).map(Number); if (!ys.length) return; iv.push([Math.min(...ys), NOW_RE.test(txt) ? yNow : Math.max(...ys)]); };
+  ents.forEach(({ e }) => addRange(e.dates));
+  allSecs.forEach(({ s }) => { const ts = s.kind === "text" ? [s.text] : s.kind === "lines" ? s.items : []; ts.forEach(t => (String(t).match(/\b(19|20)\d\d\s*[–—-]\s*(?:(19|20)\d\d|now|present|nu)\b/gi) || []).forEach(addRange)); });
+  iv.sort((a, b) => a[0] - b[0]);
+  const gaps = []; let endY = null;
+  iv.forEach(([a, b]) => { if (endY !== null && a - endY >= 2) gaps.push([endY, a]); endY = endY === null ? b : Math.max(endY, b); });
+  if (gaps.length) add("tip", "info", 3, `Gap in your timeline: ${gaps[0][0]}–${gaps[0][1]}`, "Recruiters notice gaps. If you studied, travelled or worked short jobs then, a one-line entry answers the question before it's asked.", null);
+
+  // ---- easy to scan (Ladders: long sentences and clutter hurt; bold titles and bullets help) ----
+  const longB = bullets.filter(b => b.t.length > 200);
+  if (longB.length) add("tip", "scan", Math.min(8, longB.length * 2), `${longB.length} bullet${longB.length > 1 ? "s are" : " is"} very long`, "Long sentences slow recruiters down. Keep bullets to about two lines: split them or cut words.", longB[0].go);
+  const firstP = workBullets.filter(b => /^(i|i'm|i’m|i've|i’ve|my)\b/i.test(b.t));
+  if (firstP.length) add("tip", "scan", 3, `${firstP.length} bullet${firstP.length > 1 ? "s start" : " starts"} with "I" or "My"`, "Start bullets with what you did: \"Led…\", \"Repaired…\", \"Installed…\".", firstP[0].go);
+  const bare = ents.filter(x => !x.e.minor && (x.e.org || x.e.role) && !x.e.bullets.some(b => b.trim()));
+  if (bare.length) add("tip", "scan", Math.min(6, bare.length * 2), `${bare.length} main entr${bare.length > 1 ? "ies have" : "y has"} no bullet points`, "One or two bullets on what you did or learned makes an entry count. Or tick \"Less important\" for minor ones.", bare[0].go);
+  const many = ents.filter(x => x.e.bullets.filter(b => b.trim()).length > 6);
+  if (many.length) add("tip", "scan", 3, `"${many[0].e.org || many[0].e.role}" has more than six bullets`, "Keep the strongest four to six; recruiters rarely read further.", many[0].go);
   allSecs.forEach(({ s, path }) => {
-    if (s.kind === "entries") s.entries.forEach((e, ei) => {
-      if (e.hidden) return; const ep = `${path}.entries.${ei}`;
-      if ((e.org || e.role) && !e.dates.trim()) add("warn", `No dates for "${e.org || e.role}"`, "Recruiters look for dates to understand your timeline.", ep);
-      const d = e.dates.trim();
-      if (d) {
-        dateStyles.add(/[a-z]{3}/i.test(d.replace(/\b(now|present|current|today|nu|pågående)\b/gi, "")) ? "month" : "year");
-        (d.match(/\b(now|present|current|today|ongoing)\b/gi) || []).forEach(w => nowWords.add(w.toLowerCase()));
-        if (/\d\s*[-–—]\s*\d|\d\s*[-–—]\s*[a-z]|[a-z]\s*[-–—]\s*[a-z\d]/i.test(d)) dashes.add(/–/.test(d) ? "en" : /—/.test(d) ? "em" : "hy");
-      }
-      e.bullets.forEach(b => { checkBullet(b, ep); });
-    });
-    if (s.kind === "bullets") s.items.forEach(b => checkBullet(b, path));
-    // empty visible section
     const empty = s.kind === "text" ? !s.text.trim() : s.kind === "entries" ? !s.entries.some(e => !e.hidden && (e.org || e.role || e.bullets.some(x => x.trim()))) : !s.items.some(x => x.trim());
-    if (empty) add("warn", `Section "${s.title || "untitled"}" is empty`, "Fill it in, or use Hide so it doesn't show as a blank heading.", path);
+    if (empty) add("warn", "scan", 3, `Section "${s.title || "untitled"}" is empty`, "Fill it in, or use Hide so it doesn't show as a blank heading.", path);
   });
-  function checkBullet(b, ep) {
-    const t = b.trim(); if (!t) return;
-    if (/^(i|i'm|i’m|i've|i’ve|my)\b/i.test(t)) firstPerson.push(ep);
-    if (t.length > 200) longB.push(ep);
-    const k = t.toLowerCase(); dupB.set(k, (dupB.get(k) || 0) + 1);
+
+  // ---- length & fit (GSM London poll: 46% annoyed by too-long CVs) ----
+  const words = (D.profile + " " + ents.map(x => [x.e.org, x.e.role, ...x.e.bullets].join(" ")).join(" ") + " " + allSecs.map(({ s }) => s.kind === "text" ? s.text : s.items.join(" ")).join(" ")).split(/\s+/).filter(w => /\w/.test(w)).length;
+  if (!ents.some(x => x.e.org || x.e.role)) add("fix", "fit", 10, "No jobs or education yet", "Add at least your most recent job or education, with dates and a couple of bullets.", "card:main");
+  else if (words < 80) add("warn", "fit", 6, "Very little content", "A recruiter has little to go on. Add what you did or learned in each entry.", "card:main");
+  if (document.getElementById("warn").classList.contains("show")) add("fix", "fit", 15, "Content doesn't fit the page", "Shorten text, hide a section, try Compact density, or switch to two pages.", "card:layout");
+  else if (Number(D.layout.pages) === 2) {
+    const p2 = document.querySelector('#pages .page[data-pg="2"]');
+    const f = p2 ? Math.max(contentFill(p2.querySelector(".main")), contentFill(p2.querySelector(".side"))) : 0;
+    if (f < 0.3) add("tip", "fit", 5, "Page 2 is mostly empty", "Recruiters prefer short CVs. With this little on page 2, try fitting everything on one page (Compact density helps).", "card:layout");
   }
-  if (dateStyles.size > 1) add("tip", "Dates are written in two different styles", "Some entries use months (Aug 2026), others only years (2018). Pick one style for all of them.", null);
-  if (nowWords.size > 1) add("tip", `Mixed words for ongoing jobs: ${[...nowWords].join(", ")}`, "Use the same word everywhere, for example \"Now\" or \"Present\".", null);
-  if (dashes.size > 1) add("tip", "Different dashes in your dates", "Use the same dash in every date range, for example 2018 – 2020.", null);
-  if (firstPerson.length) add("tip", `${firstPerson.length} bullet${firstPerson.length > 1 ? "s start" : " starts"} with "I" or "My"`, "CV bullets usually start with what you did: \"Led…\", \"Repaired…\", \"Installed…\".", firstPerson[0]);
-  if (longB.length) add("tip", `${longB.length} bullet${longB.length > 1 ? "s are" : " is"} very long`, "Bullets over about two lines are often skipped. Split them or cut words.", longB[0]);
-  const dups = [...dupB].filter(([, n]) => n > 1);
-  if (dups.length) add("tip", "The same bullet appears more than once", `"${dups[0][0].slice(0, 60)}…"`, null);
-  // fit
-  if (document.getElementById("warn").classList.contains("show")) add("fix", "Content doesn't fit the page", "Shorten text, hide a section, try Compact density, or switch to two pages.", "card:layout");
-  return out;
+
+  // ---- consistency ----
+  const dateStyles = new Set(), nowWords = new Set(), dashes = new Set();
+  ents.forEach(({ e }) => {
+    const d = e.dates.trim(); if (!d) return;
+    dateStyles.add(/[a-z]{3}/i.test(d.replace(new RegExp(NOW_RE.source, "gi"), "")) ? "month" : "year");
+    (d.match(new RegExp(NOW_RE.source, "gi")) || []).forEach(w => nowWords.add(w.toLowerCase()));
+    if (/\d\s*[-–—]\s*\d|\d\s*[-–—]\s*[a-z]|[a-z]\s*[-–—]\s*[a-z\d]/i.test(d)) dashes.add(/–/.test(d) ? "en" : /—/.test(d) ? "em" : "hy");
+  });
+  if (dateStyles.size > 1) add("tip", "polish", 3, "Dates are written in two styles", "Some entries use months (Aug 2026), others only years (2018). Pick one style for all of them.", null);
+  if (nowWords.size > 1) add("tip", "polish", 2, `Mixed words for ongoing roles: ${[...nowWords].join(", ")}`, "Use the same word everywhere, for example \"Now\" or \"Present\".", null);
+  if (dashes.size > 1) add("tip", "polish", 2, "Different dashes in your dates", "Use the same dash in every date range, for example 2018 – 2020.", null);
+  const dot = workBullets.filter(b => /[.!]$/.test(b.t)).length, nodot = workBullets.length - dot;
+  if (workBullets.length >= 4 && Math.min(dot, nodot) >= 1) add("tip", "polish", 2, "Some bullets end with a full stop, others don't", `${dot} with, ${nodot} without. Pick one and use it everywhere.`, null);
+  const lower = bullets.filter(b => /^[a-zåäöæø]/.test(b.t));
+  if (lower.length) add("tip", "polish", 2, `${lower.length} bullet${lower.length > 1 ? "s start" : " starts"} with a small letter`, "Start every bullet with a capital letter.", lower[0].go);
+  const dupMap = new Map(); bullets.forEach(b => dupMap.set(b.t.toLowerCase(), (dupMap.get(b.t.toLowerCase()) || 0) + 1));
+  const dup = [...dupMap].find(([, n]) => n > 1);
+  if (dup) add("tip", "polish", 2, "The same bullet appears more than once", `"${dup[0].slice(0, 60)}…"`, null);
+
+  // ---- tailoring (GU recruiter panel: tailor the CV to each job) ----
+  const post = (document.getElementById("kwText").value || "").trim();
+  let kwPct = null;
+  if (post.length >= 40 && typeof analyze === "function") {
+    const r = analyze(post); if (r.length) kwPct = Math.round(100 * r.filter(x => x.found).length / r.length);
+    if (kwPct !== null && kwPct < 60) add(kwPct < 40 ? "warn" : "tip", "tailor", kwPct < 40 ? 5 : 3, `Only ${kwPct}% of the posting's key terms are in your CV`, "Use the job's own words where they're true for you. The Keywords tab shows which ones are missing.", "tab:kw");
+  }
+
+  // ---- advice that doesn't change the score ----
+  if (D.top.mode === "image" && D.top.src && D.top.isPhoto) add("info", null, 0, "Your CV has a photo", "Many Swedish recruiters advise against photos, and some employers anonymise applications. A badge or no image is the safer choice.", "card:top");
+  if (D.layout.sidebar !== "none") add("info", null, 0, "Two-column layout", "Fine for e-mailing or handing over. Recruiter eye-tracking found that busy multi-column layouts are harder to skim, and job portals can read columns in the wrong order, so keep the sidebar short and consider One column for portal uploads.", "card:layout");
+  if (kwPct === null) add("info", null, 0, "Not checked: tailoring to the job", "Paste the job posting in the Keywords tab to include it in the score.", "tab:kw");
+  add("info", null, 0, "Not checked: spelling", "Spelling mistakes are the thing employers say annoys them most. Red underlines in the editor fields show possible mistakes, but read the PDF aloud once before sending.", null);
+  return { items: out, kwPct };
 }
+function scoreOf(r) {
+  const lost = {}; r.items.forEach(x => { if (x.cat) lost[x.cat] = (lost[x.cat] || 0) + x.pts; });
+  const cats = CATS.map(([k, n, max, d]) => ({ k, n, max, d, off: k === "tailor" && r.kwPct === null, got: Math.max(0, max - Math.min(max, lost[k] || 0)) }));
+  const on = cats.filter(c => !c.off), got = on.reduce((a, c) => a + c.got, 0), max = on.reduce((a, c) => a + c.max, 0);
+  return { total: Math.round(got / max * 100), cats };
+}
+const grade = (t, fixes) => fixes && t >= 60 ? ["Fix the red items first", "g2"] : t >= 90 ? ["Excellent", "g4"] : t >= 75 ? ["Strong", "g3"] : t >= 60 ? ["Good start", "g2"] : ["Needs work", "g1"];
 function renderChecks() {
-  if (MODE === "letter") { document.getElementById("chkOut").innerHTML = `<div class="hint">Checks are for the CV. Switch to CV at the top to see them.</div>`; return; }
-  const list = checks(), order = { fix: 0, warn: 1, tip: 2 }; list.sort((a, b) => order[a.lv] - order[b.lv]);
-  const names = { fix: "Fix", warn: "Check", tip: "Tip" };
-  document.getElementById("chkOut").innerHTML = list.length
-    ? list.map(x => `<div class="chk-item ${x.lv}" ${x.go ? `data-go="${esc(x.go)}"` : ""}><span class="lv">${names[x.lv]}</span><div class="m">${esc(x.msg)}<small>${esc(x.why)}</small></div></div>`).join("")
-    : `<div class="chk-good">✓ No problems found. Give it a final read-through, then save it as a PDF.</div>`;
+  const box = document.getElementById("chkOut");
+  if (MODE === "letter") { box.innerHTML = `<div class="hint">The review is for the CV. Switch to CV at the top to see it.</div>`; return; }
+  const r = review(), sc = scoreOf(r), [gl, gc] = grade(sc.total, r.items.some(x => x.lv === "fix"));
+  const order = { fix: 0, warn: 1, tip: 2, info: 3 };
+  const items = r.items.slice().sort((a, b) => order[a.lv] - order[b.lv] || b.pts - a.pts);
+  const names = { fix: "Fix", warn: "Check", tip: "Tip", info: "Note" };
+  const scored = items.filter(x => x.pts), notes = items.filter(x => !x.pts);
+  const row = x => `<div class="chk-item ${x.lv}" ${x.go ? `data-go="${esc(x.go)}"` : ""}><span class="lv">${names[x.lv]}</span><div class="m">${esc(x.msg)}<small>${esc(x.why)}</small></div>${x.pts ? `<span class="pts">+${x.pts}</span>` : ""}</div>`;
+  box.innerHTML = `
+    <div class="score-card ${gc}">
+      <div class="score-top"><div class="score-big">${sc.total}<span>/100</span></div><div class="score-lbl">${gl}</div></div>
+      ${sc.cats.map(c => `<div class="cat ${c.off ? "off" : ""}" title="${esc(c.off ? "Not checked: paste the job posting in the Keywords tab." : c.d)}"><span class="cn">${c.n}</span><span class="cb"><i style="width:${c.off ? 0 : (c.got / c.max) * 100}%"></i></span><span class="cv">${c.off ? "–" : c.got + "/" + c.max}</span></div>`).join("")}
+    </div>
+    ${scored.length ? `<div class="chk-h">How to improve</div>${scored.map(row).join("")}` : `<div class="chk-good">✓ Nothing to fix in the scored checks. Give it a final read-through, then save it as a PDF.</div>`}
+    ${notes.length ? `<div class="chk-h">Good to know</div>${notes.map(row).join("")}` : ""}
+    <details class="srcs"><summary>Where the score comes from</summary>
+      <p>The score is a guide built from what recruiters say and do. Tailoring only counts once you've pasted a job posting in the Keywords tab. It can't judge how good your experience is, so a high score doesn't guarantee an interview.</p>
+      <ul>
+        <li><b>Ladders eye-tracking study (2018):</b> recruiters' first screen of a CV averaged 7.4 seconds. Job titles drew the most attention; clear section headings, a summary at the top, bold titles and bulleted achievements helped; clutter, long sentences, little white space and multiple columns hurt.</li>
+        <li><b>GSM London employer poll:</b> 87% named spelling and grammar mistakes the most annoying thing on a CV, 74% missing key information such as contact details or dates, and 46% CVs that were too long.</li>
+        <li><b>University of Gothenburg recruiter panel (2024):</b> tailor the CV to the role, use a clear and consistent structure with bullet points, keep the design simple, expect recruiters to check for gaps, avoid spelling errors, and several advised against photos.</li>
+      </ul>
+    </details>`;
 }
 function updateBadge() {
-  if (MODE === "letter") { document.getElementById("chkBadge").hidden = true; return; }
-  const n = checks().filter(x => x.lv !== "tip").length, b = document.getElementById("chkBadge");
-  b.hidden = false; b.textContent = n || "✓"; b.classList.toggle("ok", !n);
+  const b = document.getElementById("chkBadge");
+  if (MODE === "letter") { b.hidden = true; return; }
+  const r = review(), t = scoreOf(r).total, [, gc] = grade(t, r.items.some(x => x.lv === "fix"));
+  b.hidden = false; b.textContent = t; b.className = "badge " + gc;
 }
 document.getElementById("chkOut").addEventListener("click", ev => {
   const it = ev.target.closest("[data-go]"); if (!it) return;
   const key = it.dataset.go;
+  if (key === "tab:kw") { document.querySelector('.tab[data-tab="kw"]').click(); document.getElementById("kwText").focus(); return; }
   document.querySelector('.tab[data-tab="edit"]').click();
   let box;
   if (key.startsWith("card:")) { box = document.querySelector(`details[data-k="${key.slice(5)}"]`); if (box) box.open = true; }
@@ -1283,7 +1504,7 @@ document.getElementById("bText").onclick = () => {
 };
 document.getElementById("txtClose").onclick = () => txtM.hidden = true;
 txtM.addEventListener("click", ev => { if (ev.target === txtM) txtM.hidden = true; });
-document.addEventListener("keydown", ev => { if (ev.key === "Escape") { txtM.hidden = true; bk.hidden = true; } });
+document.addEventListener("keydown", ev => { if (ev.key === "Escape") { txtM.hidden = true; bk.hidden = true; pdfM.hidden = true; impD.hidden = true; } });
 document.getElementById("txtCopy").onclick = async () => {
   const ta = document.getElementById("txtOut");
   try { await navigator.clipboard.writeText(ta.value); flash("Copied"); }
@@ -1302,11 +1523,12 @@ document.addEventListener("keydown", ev => {
     ev.preventDefault(); undo();
   }
 });
-document.getElementById("bPrint").onclick = () => {
-  if (document.getElementById("warn").classList.contains("show") && !confirm("Your CV doesn't fit on one page, so some text will be cut off. Print anyway?")) return;
+document.getElementById("bPrint").onclick = async () => {
+  if (document.getElementById("warn").classList.contains("show") && !(await ask("Content doesn't fit", "Some text doesn't fit on the page and will be cut off in the PDF. Print anyway?", "Print anyway"))) return;
   const old = document.title; document.title = MODE === "letter" ? nameBase() + "_Cover_Letter" : fileBase();
   let framed = false; try { framed = window.self !== window.top; } catch (e) { framed = true; }
-  try { window.print(); } catch (e) { alert("Printing isn't available here. Press Ctrl+P (Cmd+P on Mac), or download the editor and open the file directly."); }
+  if (!V.draftHint) { V.draftHint = true; saveV(); setTimeout(() => flash("Tip: click Save draft too – it reopens your CV exactly as it is"), 800); }
+  try { window.print(); } catch (e) { tell("Printing isn't available here. Press Ctrl+P (Cmd+P on Mac), or download the editor and open the file directly."); }
   if (framed) flash("No print window? Download the editor and open the file directly");
   setTimeout(() => document.title = old, 500);
 };
@@ -1318,6 +1540,794 @@ document.querySelectorAll(".tab").forEach(t => t.onclick = () => {
   document.getElementById("pChk").hidden = t.dataset.tab !== "chk";
   if (t.dataset.tab === "chk") renderChecks();
 });
+
+/* ======================= PDF text extraction (no libraries) =======================
+   Reads the text of a PDF together with its position, size and boldness, so the
+   CV importer can work out headings, columns and bullets. Handles the PDFs made by
+   Word, Google Docs, LibreOffice, Chrome/Edge "Save as PDF" and most CV builders.
+   Scanned PDFs (pictures of text) have no text to read. */
+const PDFText = (() => {
+  "use strict";
+
+  /* ---------- inflate (zlib / deflate), small and dependency-free ---------- */
+  const LB = [3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 17, 19, 23, 27, 31, 35, 43, 51, 59, 67, 83, 99, 115, 131, 163, 195, 227, 258];
+  const LE = [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 0];
+  const DB = [1, 2, 3, 4, 5, 7, 9, 13, 17, 25, 33, 49, 65, 97, 129, 193, 257, 385, 513, 769, 1025, 1537, 2049, 3073, 4097, 6145, 8193, 12289, 16385, 24577];
+  const DE = [0, 0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13];
+  const ORDER = [16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15];
+  function huff(lengths) {
+    const counts = new Uint16Array(16), syms = new Uint16Array(lengths.length), offs = new Uint16Array(16);
+    for (const l of lengths) counts[l]++;
+    counts[0] = 0;
+    for (let i = 1; i < 16; i++) offs[i] = offs[i - 1] + counts[i - 1];
+    for (let s = 0; s < lengths.length; s++) if (lengths[s]) syms[offs[lengths[s]]++] = s;
+    return { counts, syms };
+  }
+  let FIXL = null, FIXD = null;
+  function inflate(src) {
+    let pos = 0;
+    if (src.length > 2 && (src[0] & 15) === 8 && ((src[0] << 8) | src[1]) % 31 === 0) pos = 2; // zlib header
+    let out = new Uint8Array(Math.max(4096, src.length * 4)), op = 0, bb = 0, bc = 0;
+    const grow = n => { if (op + n > out.length) { const o = new Uint8Array(Math.max(out.length * 2, op + n)); o.set(out); out = o; } };
+    const bit = () => { if (!bc) { if (pos >= src.length) throw 0; bb = src[pos++]; bc = 8; } const b = bb & 1; bb >>= 1; bc--; return b; };
+    const bits = n => { let v = 0; for (let i = 0; i < n; i++) v |= bit() << i; return v; };
+    const dec = h => {
+      let code = 0, first = 0, index = 0;
+      for (let len = 1; len < 16; len++) {
+        code |= bit(); const c = h.counts[len];
+        if (code - c < first) return h.syms[index + (code - first)];
+        index += c; first += c; first <<= 1; code <<= 1;
+      }
+      throw 0;
+    };
+    try {
+      let last = 0;
+      while (!last) {
+        last = bit(); const type = bits(2);
+        if (type === 0) {
+          bb = 0; bc = 0;
+          const len = src[pos] | (src[pos + 1] << 8); pos += 4;
+          grow(len); out.set(src.subarray(pos, pos + len), op); op += len; pos += len;
+          continue;
+        }
+        let lt, dt;
+        if (type === 1) {
+          if (!FIXL) { const l = []; for (let i = 0; i < 288; i++) l.push(i < 144 ? 8 : i < 256 ? 9 : i < 280 ? 7 : 8); FIXL = huff(l); FIXD = huff(new Array(30).fill(5)); }
+          lt = FIXL; dt = FIXD;
+        } else if (type === 2) {
+          const hl = bits(5) + 257, hd = bits(5) + 1, hc = bits(4) + 4, cl = new Array(19).fill(0);
+          for (let i = 0; i < hc; i++) cl[ORDER[i]] = bits(3);
+          const ch = huff(cl), lens = [];
+          while (lens.length < hl + hd) {
+            const sym = dec(ch);
+            if (sym < 16) lens.push(sym);
+            else if (sym === 16) { const p = lens[lens.length - 1] || 0; for (let r = 3 + bits(2); r; r--) lens.push(p); }
+            else if (sym === 17) for (let r = 3 + bits(3); r; r--) lens.push(0);
+            else for (let r = 11 + bits(7); r; r--) lens.push(0);
+          }
+          lt = huff(lens.slice(0, hl)); dt = huff(lens.slice(hl, hl + hd));
+        } else throw 0;
+        for (;;) {
+          let sym = dec(lt);
+          if (sym < 256) { grow(1); out[op++] = sym; }
+          else if (sym === 256) break;
+          else {
+            sym -= 257; const len = LB[sym] + bits(LE[sym]);
+            const ds = dec(dt), dist = DB[ds] + bits(DE[ds]);
+            grow(len);
+            for (let i = 0; i < len; i++, op++) out[op] = out[op - dist];
+          }
+        }
+      }
+    } catch (e) { /* truncated or damaged stream: keep what was decoded */ }
+    return out.subarray(0, op);
+  }
+
+  function a85(src) { // ASCII85: 5 characters -> 4 bytes, "z" = four zero bytes, ends at "~>"
+    const out = []; let grp = [];
+    for (let i = 0; i < src.length; i++) {
+      const c = src[i];
+      if (c === 126) break;
+      if (c === 122 && !grp.length) { out.push(0, 0, 0, 0); continue; }
+      if (c < 33 || c > 117) continue;
+      grp.push(c - 33);
+      if (grp.length === 5) { let v = 0; for (const x of grp) v = v * 85 + x; out.push(v >>> 24 & 255, v >>> 16 & 255, v >>> 8 & 255, v & 255); grp = []; }
+    }
+    if (grp.length) { const n = grp.length; while (grp.length < 5) grp.push(84); let v = 0; for (const x of grp) v = v * 85 + x; [v >>> 24 & 255, v >>> 16 & 255, v >>> 8 & 255, v & 255].slice(0, n - 1).forEach(b => out.push(b)); }
+    return new Uint8Array(out);
+  }
+
+  /* ---------- low-level object parser ---------- */
+  const WS = c => c === 32 || c === 10 || c === 13 || c === 9 || c === 12 || c === 0;
+  const DELIM = c => c === 40 || c === 41 || c === 60 || c === 62 || c === 91 || c === 93 || c === 123 || c === 125 || c === 47 || c === 37;
+  class Lexer {
+    constructor(b, p) { this.b = b; this.p = p || 0; }
+    skip() {
+      const b = this.b;
+      for (;;) {
+        while (this.p < b.length && WS(b[this.p])) this.p++;
+        if (b[this.p] === 37) { while (this.p < b.length && b[this.p] !== 10 && b[this.p] !== 13) this.p++; } else break;
+      }
+    }
+    // returns a token: {t:'num'|'name'|'str'|'hex'|'op'|'['|']'|'<<'|'>>'|'eof', v}
+    next() {
+      this.skip(); const b = this.b; if (this.p >= b.length) return { t: "eof" };
+      const c = b[this.p];
+      if (c === 91) { this.p++; return { t: "[" }; }
+      if (c === 93) { this.p++; return { t: "]" }; }
+      if (c === 60 && b[this.p + 1] === 60) { this.p += 2; return { t: "<<" }; }
+      if (c === 62 && b[this.p + 1] === 62) { this.p += 2; return { t: ">>" }; }
+      if (c === 123 || c === 125) { this.p++; return { t: "op", v: String.fromCharCode(c) }; }
+      if (c === 47) {
+        let s = ""; this.p++;
+        while (this.p < b.length && !WS(b[this.p]) && !DELIM(b[this.p])) {
+          if (b[this.p] === 35) { s += String.fromCharCode(parseInt(String.fromCharCode(b[this.p + 1], b[this.p + 2]), 16)); this.p += 3; }
+          else s += String.fromCharCode(b[this.p++]);
+        }
+        return { t: "name", v: s };
+      }
+      if (c === 40) return { t: "str", v: this.lit() };
+      if (c === 60) {
+        this.p++; let h = "";
+        while (this.p < b.length && b[this.p] !== 62) { const ch = b[this.p++]; if (!WS(ch)) h += String.fromCharCode(ch); }
+        this.p++; if (h.length % 2) h += "0";
+        const o = []; for (let i = 0; i < h.length; i += 2) o.push(parseInt(h.substr(i, 2), 16) || 0);
+        return { t: "str", v: o };
+      }
+      let s = "";
+      while (this.p < b.length && !WS(b[this.p]) && !DELIM(b[this.p])) s += String.fromCharCode(b[this.p++]);
+      if (!s) { this.p++; return this.next(); }
+      if (/^[+-]?(\d+\.?\d*|\.\d+)$/.test(s)) return { t: "num", v: parseFloat(s) };
+      return { t: "op", v: s };
+    }
+    lit() { // literal string -> array of byte values
+      const b = this.b, o = []; let depth = 0; this.p++;
+      while (this.p < b.length) {
+        let c = b[this.p++];
+        if (c === 92) {
+          c = b[this.p++];
+          const m = { 110: 10, 114: 13, 116: 9, 98: 8, 102: 12 }[c];
+          if (m !== undefined) o.push(m);
+          else if (c >= 48 && c <= 55) { let n = c - 48; for (let k = 0; k < 2 && b[this.p] >= 48 && b[this.p] <= 55; k++) n = n * 8 + b[this.p++] - 48; o.push(n & 255); }
+          else if (c === 13) { if (b[this.p] === 10) this.p++; }
+          else if (c !== 10) o.push(c);
+        } else if (c === 40) { depth++; o.push(c); }
+        else if (c === 41) { if (!depth) break; depth--; o.push(c); }
+        else o.push(c);
+      }
+      return o;
+    }
+  }
+  // parse one value (dicts, arrays, refs "1 0 R"); returns plain JS
+  function value(lx, tok) {
+    tok = tok || lx.next();
+    if (tok.t === "num") {
+      const save = lx.p, t2 = lx.next();
+      if (t2.t === "num" && Number.isInteger(tok.v) && Number.isInteger(t2.v)) {
+        const save2 = lx.p, t3 = lx.next();
+        if (t3.t === "op" && t3.v === "R") return { ref: tok.v };
+        lx.p = save2;
+      }
+      lx.p = save; return tok.v;
+    }
+    if (tok.t === "name") return { n: tok.v };
+    if (tok.t === "str") return { s: tok.v };
+    if (tok.t === "[") { const a = []; for (;;) { const t = lx.next(); if (t.t === "]" || t.t === "eof") break; a.push(value(lx, t)); } return a; }
+    if (tok.t === "<<") {
+      const d = {};
+      for (;;) {
+        const t = lx.next(); if (t.t === ">>" || t.t === "eof") break;
+        if (t.t === "name") d[t.v] = value(lx);
+      }
+      return d;
+    }
+    if (tok.t === "op") return tok.v === "true" ? true : tok.v === "false" ? false : null;
+    return null;
+  }
+
+  /* ---------- document ---------- */
+  function find(b, str, from) { // byte search
+    const n = str.length, c0 = str.charCodeAt(0);
+    outer: for (let i = from || 0; i <= b.length - n; i++) {
+      if (b[i] !== c0) continue;
+      for (let k = 1; k < n; k++) if (b[i + k] !== str.charCodeAt(k)) continue outer;
+      return i;
+    }
+    return -1;
+  }
+  function load(bytes) {
+    const objs = {};
+    // scan the whole file for "N G obj" (also works on damaged files whose xref table is wrong)
+    let i = 0;
+    while ((i = find(bytes, "obj", i)) >= 0) {
+      const at = i; i += 3;
+      if (bytes[at - 1] !== 32 && bytes[at - 1] !== 10 && bytes[at - 1] !== 13) continue;
+      if (bytes[at + 3] !== undefined && !WS(bytes[at + 3]) && !DELIM(bytes[at + 3])) continue;
+      // read backwards: generation then object number
+      let p = at - 1; while (p > 0 && WS(bytes[p])) p--;
+      let e = p; while (p >= 0 && bytes[p] >= 48 && bytes[p] <= 57) p--; const gen = e - p; if (!gen) continue;
+      while (p > 0 && WS(bytes[p])) p--;
+      e = p; while (p >= 0 && bytes[p] >= 48 && bytes[p] <= 57) p--; if (e === p) continue;
+      const num = parseInt(String.fromCharCode(...bytes.subarray(p + 1, e + 1)), 10);
+      const lx = new Lexer(bytes, at + 3);
+      let val; try { val = value(lx); } catch (er) { continue; }
+      const o = { val };
+      const save = lx.p, t = lx.next();
+      if (t.t === "op" && t.v === "stream") {
+        let s = lx.p; if (bytes[s] === 13) s++; if (bytes[s] === 10) s++;
+        let len = val && typeof val.Length === "number" ? val.Length : -1, end;
+        if (len >= 0 && s + len <= bytes.length && find(bytes.subarray(s + len, s + len + 32), "endstream") >= 0) end = s + len;
+        else { end = find(bytes, "endstream", s); if (end < 0) end = bytes.length; }
+        o.raw = bytes.subarray(s, end); i = end;
+      } else lx.p = save;
+      objs[num] = o;
+    }
+    const doc = { objs };
+    const get = v => { let k = 0; while (v && v.ref !== undefined && k++ < 20) v = objs[v.ref] ? objs[v.ref].val : null; return v; };
+    doc.get = get;
+    doc.data = o => {
+      if (!o || !o.raw) return new Uint8Array(0);
+      let f = get(o.val.Filter); f = f ? (Array.isArray(f) ? f : [f]) : [];
+      let d = o.raw;
+      for (const x of f) {
+        const n = get(x) && get(x).n;
+        if (n === "FlateDecode" || n === "Fl") d = inflate(d);
+        else if (n === "ASCII85Decode" || n === "A85") d = a85(d);
+        else if (n === "ASCIIHexDecode" || n === "AHx") { const h = String.fromCharCode(...d).replace(/[^0-9a-f]/gi, ""); d = new Uint8Array(h.length >> 1); for (let k = 0; k < d.length; k++) d[k] = parseInt(h.substr(k * 2, 2), 16); }
+        else return new Uint8Array(0); // images and rare filters: not needed for text
+      }
+      return d;
+    };
+    doc.stream = v => { // stream object by reference or direct
+      if (v && v.ref !== undefined) return objs[v.ref] || null;
+      return null;
+    };
+    // objects packed inside object streams (PDF 1.5+, used by Word, Firefox, Acrobat)
+    Object.keys(objs).forEach(k => {
+      const o = objs[k];
+      if (!o.val || !o.val.Type || o.val.Type.n !== "ObjStm") return;
+      const d = doc.data(o), n = o.val.N | 0, first = o.val.First | 0, lx = new Lexer(d, 0), head = [];
+      for (let j = 0; j < n; j++) { const a = lx.next(), b = lx.next(); head.push([a.v, b.v]); }
+      head.forEach(([num, off]) => { if (objs[num] && objs[num].raw) return; try { objs[num] = { val: value(new Lexer(d, first + off)) }; } catch (e) {} });
+    });
+    return doc;
+  }
+
+  /* ---------- fonts ---------- */
+  const WINANSI = { 128: "€", 130: "‚", 131: "ƒ", 132: "„", 133: "…", 134: "†", 135: "‡", 136: "ˆ", 137: "‰", 138: "Š", 139: "‹", 140: "Œ", 142: "Ž", 145: "‘", 146: "’", 147: "“", 148: "”", 149: "•", 150: "–", 151: "—", 152: "˜", 153: "™", 154: "š", 155: "›", 156: "œ", 158: "ž", 159: "Ÿ" };
+  const GLYPH = { bullet: "•", endash: "–", emdash: "—", quoteright: "’", quoteleft: "‘", quotedblleft: "“", quotedblright: "”", space: " ", hyphen: "-", ellipsis: "…", adieresis: "ä", odieresis: "ö", aring: "å", Adieresis: "Ä", Odieresis: "Ö", Aring: "Å", eacute: "é", udieresis: "ü", periodcentered: "·", fi: "fi", fl: "fl" };
+  function utf16(bytes) { let s = ""; for (let i = 0; i + 1 < bytes.length; i += 2) s += String.fromCharCode((bytes[i] << 8) | bytes[i + 1]); return s; }
+  function cmapOf(doc, ref) {
+    const o = doc.stream(ref); if (!o) return null;
+    const lx = new Lexer(doc.data(o), 0), map = new Map(), toks = [];
+    let t, two = false;
+    while ((t = lx.next()).t !== "eof") {
+      if (t.t === "op") {
+        if (t.v === "endcodespacerange") { for (const x of toks) if (x.t === "str" && x.v.length >= 2) two = true; }
+        if (t.v === "endbfchar") for (let k = 0; k + 1 < toks.length; k += 2) { const a = toks[k], b = toks[k + 1]; if (a.t === "str" && b.t === "str") map.set(code(a.v), utf16(b.v)); }
+        if (t.v === "endbfrange") {
+          for (let k = 0; k + 2 < toks.length; k += 3) {
+            const lo = code(toks[k].v), hi = code(toks[k + 1].v), d = toks[k + 2];
+            if (d.t === "str") { const base = d.v.slice(); for (let c = lo; c <= hi && c - lo < 65536; c++) { map.set(c, utf16(base)); base[base.length - 1]++; if (base[base.length - 1] > 255) { base[base.length - 1] = 0; if (base.length > 1) base[base.length - 2]++; } } }
+            else if (d.t === "arr") d.v.forEach((x, j) => map.set(lo + j, utf16(x)));
+          }
+        }
+        toks.length = 0;
+      } else if (t.t === "[") { const arr = []; let u; while ((u = lx.next()).t === "str") arr.push(u.v); toks.push({ t: "arr", v: arr }); }
+      else toks.push(t);
+    }
+    return { map, two };
+    function code(v) { let c = 0; for (const x of v) c = c * 256 + x; return c; }
+  }
+  function fontOf(doc, fref, cache) {
+    const key = fref && fref.ref !== undefined ? fref.ref : null;
+    if (key !== null && cache[key]) return cache[key];
+    const f = doc.get(fref) || {};
+    const sub = f.Subtype && f.Subtype.n, type0 = sub === "Type0";
+    const desc = type0 ? doc.get((doc.get(f.DescendantFonts) || [])[0]) || {} : f;
+    const base = ((doc.get(f.BaseFont) || {}).n || (doc.get(desc.BaseFont) || {}).n || "");
+    const fd = doc.get(desc.FontDescriptor) || doc.get(f.FontDescriptor) || {};
+    const weight = doc.get(fd.FontWeight) || 0;
+    const font = {
+      bold: /bold|black|heavy|semibold|demi|extrabold/i.test(base) || weight >= 600,
+      italic: /italic|oblique/i.test(base),
+      two: type0, cmap: f.ToUnicode ? cmapOf(doc, f.ToUnicode) : null, widths: new Map(), dw: 1000, enc: {}
+    };
+    if (font.cmap && font.cmap.two) font.two = true;
+    if (type0) {
+      font.dw = doc.get(desc.DW) || 1000;
+      const w = doc.get(desc.W) || [];
+      for (let k = 0; k < w.length;) {
+        const c = doc.get(w[k]), nx = doc.get(w[k + 1]);
+        if (Array.isArray(nx)) { nx.forEach((x, j) => font.widths.set(c + j, doc.get(x))); k += 2; }
+        else { const wd = doc.get(w[k + 2]); for (let cc = c; cc <= nx; cc++) font.widths.set(cc, wd); k += 3; }
+      }
+    } else {
+      const fc = doc.get(f.FirstChar) || 0, ws = doc.get(f.Widths) || [];
+      ws.forEach((x, j) => font.widths.set(fc + j, doc.get(x)));
+      font.dw = 500;
+      const enc = doc.get(f.Encoding);
+      if (enc && enc.Differences) { let c = 0; for (const x of doc.get(enc.Differences)) { const v = doc.get(x); if (typeof v === "number") c = v; else if (v && v.n) font.enc[c++] = GLYPH[v.n] || (v.n.length === 1 ? v.n : null); } }
+    }
+    if (key !== null) cache[key] = font;
+    return font;
+  }
+  function decodeText(font, bytes) {
+    const out = []; // [{ch, w}] w = width in 1/1000 em
+    const step = font.two ? 2 : 1;
+    for (let i = 0; i + step - 1 < bytes.length; i += step) {
+      const c = step === 2 ? (bytes[i] << 8) | bytes[i + 1] : bytes[i];
+      let ch = font.cmap && font.cmap.map.has(c) ? font.cmap.map.get(c) : null;
+      if (ch === null) ch = font.enc[c] !== undefined && font.enc[c] !== null ? font.enc[c] : step === 2 ? "" : (WINANSI[c] || String.fromCharCode(c));
+      const w = font.widths.has(c) ? font.widths.get(c) : font.dw || 500;
+      out.push({ ch, w, sp: step === 1 && c === 32 });
+    }
+    return out;
+  }
+
+  /* ---------- page content ---------- */
+  const mul = (m, n) => [m[0] * n[0] + m[1] * n[2], m[0] * n[1] + m[1] * n[3], m[2] * n[0] + m[3] * n[2], m[2] * n[1] + m[3] * n[3], m[4] * n[0] + m[5] * n[2] + n[4], m[4] * n[1] + m[5] * n[3] + n[5]];
+  function runPage(doc, contents, res, ctm0, runs, cache, depth) {
+    const g = doc.get;
+    let ctm = ctm0.slice(), stack = [], tm = [1, 0, 0, 1, 0, 0], tlm = tm.slice(), font = null, fs = 10, tl = 0, tc = 0, tw = 0, th = 1, rise = 0;
+    const fonts = g(g(res || {}).Font) || {}, xo = g(g(res || {}).XObject) || {};
+    const show = items => { // items: array of byte arrays or numbers (TJ)
+      if (!font) return;
+      for (const it of items) {
+        if (typeof it === "number") { const dx = -it / 1000 * fs * th; if (it < -180) push(" ", 0, true); tm = mul([1, 0, 0, 1, dx, 0], tm); continue; }
+        const glyphs = decodeText(font, it);
+        for (const gl of glyphs) {
+          push(gl.ch, gl.w);
+          const dx = (gl.w / 1000 * fs + tc + (gl.sp ? tw : 0)) * th;
+          tm = mul([1, 0, 0, 1, dx, 0], tm);
+        }
+      }
+    };
+    const push = (ch, w, gap) => {
+      if (!ch) return;
+      const m = mul(mul([fs * th, 0, 0, fs, 0, rise], tm), ctm);
+      const size = Math.hypot(m[2], m[3]) || fs, adv = w / 1000 * Math.hypot(m[0], m[1]);
+      runs.push({ ch, x: m[4], y: m[5], w: adv, size, bold: font.bold, italic: font.italic, gap: !!gap, up: Math.abs(m[1]) < Math.abs(m[0]) * 0.2 });
+    };
+    for (const c of contents) {
+      const lx = new Lexer(c, 0), ops = [];
+      for (;;) {
+        const t = lx.next(); if (t.t === "eof") break;
+        if (t.t !== "op") { ops.push(t.t === "num" ? t.v : t.t === "name" ? { n: t.v } : t.t === "str" ? t.v : t.t === "[" ? arr() : t.t === "<<" ? (lx.p -= 2, value(lx)) : null); continue; }
+        const op = t.v, a = ops; const num = k => a[a.length - k];
+        switch (op) {
+          case "q": stack.push([ctm, font, fs, tl, tc, tw, th, rise]); break;
+          case "Q": if (stack.length) [ctm, font, fs, tl, tc, tw, th, rise] = stack.pop(); break;
+          case "cm": if (a.length >= 6) ctm = mul(a.slice(-6), ctm); break;
+          case "BT": tm = [1, 0, 0, 1, 0, 0]; tlm = tm.slice(); break;
+          case "Tf": { const nm = a[a.length - 2]; fs = num(1); if (nm && nm.n && fonts[nm.n]) font = fontOf(doc, fonts[nm.n], cache); break; }
+          case "Tc": tc = num(1); break;
+          case "Tw": tw = num(1); break;
+          case "Tz": th = num(1) / 100; break;
+          case "TL": tl = num(1); break;
+          case "Ts": rise = num(1); break;
+          case "Td": tlm = mul([1, 0, 0, 1, num(2), num(1)], tlm); tm = tlm.slice(); break;
+          case "TD": tl = -num(1); tlm = mul([1, 0, 0, 1, num(2), num(1)], tlm); tm = tlm.slice(); break;
+          case "Tm": tlm = a.slice(-6); tm = tlm.slice(); break;
+          case "T*": tlm = mul([1, 0, 0, 1, 0, -tl], tlm); tm = tlm.slice(); break;
+          case "Tj": show([a[a.length - 1]]); break;
+          case "TJ": show(a[a.length - 1] || []); break;
+          case "'": tlm = mul([1, 0, 0, 1, 0, -tl], tlm); tm = tlm.slice(); show([a[a.length - 1]]); break;
+          case "\"": tw = a[a.length - 3]; tc = a[a.length - 2]; tlm = mul([1, 0, 0, 1, 0, -tl], tlm); tm = tlm.slice(); show([a[a.length - 1]]); break;
+          case "Do": {
+            const nm = a[a.length - 1]; if (!nm || !nm.n || depth > 4) break;
+            const x = doc.stream(xo[nm.n]); if (!x || !x.val || !x.val.Subtype || x.val.Subtype.n !== "Form") break;
+            const m = g(x.val.Matrix) || [1, 0, 0, 1, 0, 0];
+            runPage(doc, [doc.data(x)], g(x.val.Resources) || res, mul(m.map(g), ctm), runs, cache, depth + 1);
+            break;
+          }
+          case "BI": { // inline image: skip its binary data
+            const i = find(c, "ID", lx.p); if (i < 0) break;
+            let e = i + 3; while (e < c.length - 2 && !(WS(c[e - 1]) && c[e] === 69 && c[e + 1] === 73 && (WS(c[e + 2]) || e + 2 >= c.length))) e++;
+            lx.p = e + 2; break;
+          }
+        }
+        a.length = 0;
+      }
+      function arr() { const out = []; for (;;) { const t = lx.next(); if (t.t === "]" || t.t === "eof") break; out.push(t.t === "num" ? t.v : t.t === "str" ? t.v : t.t === "name" ? { n: t.v } : null); } return out; }
+    }
+  }
+  function pages(doc) {
+    const g = doc.get, out = [];
+    const walk = (node, inh, seen) => {
+      node = g(node); if (!node || seen.has(node)) return; seen.add(node);
+      const res = node.Resources !== undefined ? node.Resources : inh.res, mb = node.MediaBox !== undefined ? node.MediaBox : inh.mb;
+      if (node.Kids) for (const k of g(node.Kids)) walk(k, { res, mb }, seen);
+      else if (!node.Type || node.Type.n === "Page") out.push({ node, res, mb });
+    };
+    const cat = Object.values(doc.objs).map(o => o.val).find(v => v && v.Type && v.Type.n === "Catalog");
+    if (cat) walk(cat.Pages, {}, new Set());
+    if (!out.length) Object.keys(doc.objs).map(Number).sort((a, b) => a - b).forEach(k => { const v = doc.objs[k].val; if (v && v.Type && v.Type.n === "Page") out.push({ node: v, res: v.Resources, mb: v.MediaBox }); });
+    return out;
+  }
+
+  /* ---------- public: extract(ArrayBuffer) -> [{w,h,runs:[{text,x,y,w,size,bold}]}] ---------- */
+  function extract(buf) {
+    const bytes = new Uint8Array(buf);
+    if (find(bytes.subarray(0, 1024), "%PDF") < 0) throw new Error("not-pdf");
+    if (find(bytes, "/Encrypt") >= 0) throw new Error("encrypted");
+    const doc = load(bytes), g = doc.get, cache = {}, result = [];
+    for (const pg of pages(doc).slice(0, 6)) {
+      const mb = (g(pg.mb) || [0, 0, 595, 842]).map(g);
+      let cs = g(pg.node.Contents); cs = cs ? (Array.isArray(pg.node.Contents) || Array.isArray(cs) ? (Array.isArray(cs) ? cs : [pg.node.Contents]) : [pg.node.Contents]) : [];
+      const datas = cs.map(c => doc.data(doc.stream(c) || (c && c.ref === undefined ? null : null))).filter(d => d && d.length);
+      const glyphs = [];
+      runPage(doc, datas, g(pg.res), [1, 0, 0, 1, -mb[0], -mb[1]], glyphs, cache, 0);
+      const W = mb[2] - mb[0], H = mb[3] - mb[1];
+      // ignore text outside the page (clipped overflow, off-page leftovers)
+      const vis = glyphs.filter(gl => gl.y > -1 && gl.y < H + 1 && gl.x > -1 && gl.x < W + 1);
+      result.push({ w: W, h: H, runs: words(vis) });
+    }
+    return result;
+  }
+  const LIG = { "\ufb00": "ff", "\ufb01": "fi", "\ufb02": "fl", "\ufb03": "ffi", "\ufb04": "ffl", "\ufb05": "st", "\ufb06": "st" };
+  // join glyphs into words/runs on the same baseline
+  function words(gs) {
+    const out = []; let cur = null;
+    for (const gl of gs) {
+      if (!gl.up) continue; // skip rotated text (watermarks, vertical labels)
+      const ch = gl.ch.replace(/[\u200b-\u200d\ufeff\u00ad]/g, "").replace(/[\ufb00-\ufb06]/g, m => LIG[m]);
+      if (cur && Math.abs(gl.y - cur.y) < cur.size * 0.35 && gl.x >= cur.x1 - cur.size * 0.6 && gl.x - cur.x1 < cur.size * 1.2 && gl.size > cur.size * 0.6 && gl.size < cur.size * 1.6) {
+        if (gl.gap || (gl.x - cur.x1 > cur.size * 0.18 && !/\s$/.test(cur.text) && ch !== " ")) cur.text += " ";
+        cur.text += ch; cur.x1 = Math.max(cur.x1, gl.x + gl.w); cur.bold = cur.bold && (gl.bold || ch === " ");
+        continue;
+      }
+      if (gl.gap && !ch.trim()) continue;
+      cur = { text: ch, x: gl.x, x1: gl.x + gl.w, y: gl.y, size: gl.size, bold: gl.bold, italic: gl.italic };
+      out.push(cur);
+    }
+    return out.map(r => ({ ...r, text: r.text.replace(/\s+/g, " ") })).filter(r => r.text.trim());
+  }
+  return { extract, inflate };
+})();
+
+/* ======================= CV importer =======================
+   Turns text (from a PDF or pasted) into editor data: name, headline, contacts,
+   profile, and sections with entries or lists. It's a best guess: the user checks
+   the result. Headings are recognised in English and Swedish. */
+const CVImport = (() => {
+  "use strict";
+  const CATS = [ // [category, words]; order matters (first match wins)
+    ["contact", ["contact", "contact details", "contact information", "contact info", "kontakt", "kontaktuppgifter", "personal details", "personal information", "personuppgifter", "details"]],
+    ["profile", ["profile", "profil", "summary", "professional summary", "career summary", "about me", "about", "om mig", "personal statement", "objective", "career objective", "sammanfattning", "presentation", "personal profile"]],
+    ["experience", ["experience", "work experience", "professional experience", "relevant experience", "employment", "employment history", "work history", "career history", "career", "arbetslivserfarenhet", "erfarenhet", "yrkeserfarenhet", "anställningar", "arbetserfarenhet", "work"]],
+    ["education", ["education", "training", "technical training", "studies", "academic background", "education and training", "education & training", "utbildning", "utbildningar", "studier", "courses", "kurser", "schooling"]],
+    ["languages", ["languages", "language", "språk", "språkkunskaper"]],
+    ["certs", ["certifications", "certification", "certificates", "certifikat", "licences", "licenses", "licence", "license", "licences & certs", "licenses & certifications", "qualifications", "körkort", "behörigheter", "certifieringar"]],
+    ["skills", ["skills", "key skills", "core skills", "technical skills", "hardware skills", "software skills", "it skills", "computer skills", "competences", "competencies", "kompetenser", "kompetens", "färdigheter", "kunskaper", "it-kunskaper", "datorkunskaper", "tools", "strengths", "styrkor", "working style", "expertise", "abilities"]],
+    ["other", ["interests", "hobbies", "intressen", "fritidsintressen", "references", "referenser", "volunteering", "volunteer work", "ideellt arbete", "projects", "projekt", "achievements", "awards", "publications", "merits", "meriter", "övrigt", "other", "additional information", "extracurricular activities", "activities"]]
+  ];
+  const MON = "(?:jan|feb|mar|apr|may|maj|jun|jul|aug|sep|sept|oct|okt|nov|dec)[a-zé]*\\.?";
+  const NOW = "(?:now|present|current|today|ongoing|nu|pågående|idag|dags dato)";
+  const D1 = `(?:${MON}\\s*)?(?:19|20)\\d\\d|(?:0?[1-9]|1[0-2])[/.](?:19|20)\\d\\d`;
+  const RANGE = `(?:${D1})(?:\\s*(?:[–—-]|to|till|–)\\s*(?:${D1}|${NOW}))?|${NOW}`;
+  const DATE_ONLY = new RegExp(`^[\\s(]*(?:${RANGE})(?:\\s*[–—-]\\s*(?:${RANGE}))?[\\s).]*$`, "i");
+  const DATE_TAIL = new RegExp(`[\\s,|(]*[–—-]?\\s*((?:${D1})(?:\\s*(?:[–—-]|to|till)\\s*(?:${D1}|${NOW}))?)[\\s)]*$`, "i");
+  const DATE_PAREN = new RegExp(`\\s*\\(((?:${D1})(?:\\s*[–—-]\\s*(?:${D1}|${NOW}))?)\\)`, "i");
+  const HAS_RANGE = new RegExp(`(?:${D1})\\s*(?:[–—-]|to|till)\\s*(?:${D1}|${NOW})`, "i");
+  const NOW_ONLY = new RegExp(`^\\s*[–—-]?\\s*${NOW}\\s*$`, "i");
+  const BULLET = /^\s*[•●▪■◦‣∙·○◆►▶✓✔➢➤‣⁃\uf0b7\uf0a7*]\s*|^\s*[-–]\s+(?=\S)/;
+  const EMAIL = /[\w.+-]+@[\w-]+(\.[\w-]+)+/;
+  const PHONE = /(\+?\(?\d[\d\s()\-–]{6,}\d)/;
+  const URL = /((https?:\/\/)?(www\.)?(linkedin\.com|github\.com|[\w-]+\.(se|com|nu|io|dev|net|org|me))(\/[^\s,·|]*)?)/i;
+
+  // words that mark a job title or programme, so "IT Technician, Company AB" can be told apart from "Company AB, City"
+  const TITLE = /\b(technician|engineer|manager|agent|assistant|developer|consultant|specialist|analyst|coordinator|supervisor|lead|leader|installer|administrator|admin|intern|internship|trainee|student|teacher|nurse|programme|program|course|degree|bachelor|master|diploma|apprentice|apprenticeship|operator|designer|architect|officer|associate|representative|advisor|adviser|clerk|carpenter|electrician|driver|cook|chef|waiter|waitress|barista|cashier|receptionist|tekniker|ingenjör|utvecklare|konsult|säljare|assistent|chef|handläggare|lärare|sjuksköterska|elev|praktikant|montör|snickare|elektriker|förare|kock|servitör|kassör|receptionist|samordnare|handledare|utbildning|kurs|support|desk)\b/i;
+  const norm = s => s.toLowerCase().replace(/[:：]$/, "").replace(/\s+/g, " ").trim();
+  function catOf(t) {
+    const n = norm(t).replace(/&/g, "and");
+    if (/,/.test(n)) return null;
+    for (const [c, ws] of CATS) if (ws.some(w => { w = w.replace(/&/g, "and"); return n === w || n.startsWith(w + " ") || n.startsWith(w + "/"); })) return c;
+    return null;
+  }
+  const isCaps = t => /[A-ZÅÄÖ]/.test(t) && t === t.toUpperCase() && /[A-ZÅÄÖ]{2}/.test(t);
+  const titleCase = t => t.toLowerCase().replace(/(^|[\s-])(\p{L})/gu, (m, a, b) => a + b.toUpperCase());
+  const sentence = t => isCaps(t) ? t.charAt(0) + t.slice(1).toLowerCase() : t;
+
+  /* ---------- PDF runs -> ordered lines (recursive XY-cut: columns first, then rows) ---------- */
+  function linesFromPdf(pages) {
+    const out = [];
+    pages.forEach((pg, pi) => {
+      const runs = pg.runs.filter(r => r.text.trim());
+      if (!runs.length) return;
+      const chars = a => a.reduce((s, t) => s + t.text.length, 0), total = chars(runs);
+      const leaves = [];
+      // top level: a sidebar gutter may be crossed by a few full-width header items
+      const top = vcut(runs, true);
+      if (top) {
+        const [L, R, F] = top, sideIsLeft = chars(L) < chars(R);
+        const M = sideIsLeft ? R : L, S = sideIsLeft ? L : R;
+        const topCols = Math.max(...M.concat(S).map(r => r.y));
+        const head = F.filter(r => r.y > topCols), tail = F.filter(r => r.y <= topCols);
+        cut(head, "main", 1); cut(M, "main", 1); cut(tail, "main", 1); cut(S, "side", 1);
+      } else cut(runs, "main", 1);
+      leaves.forEach(lf => out.push(...toLines(lf.runs, lf.col, pi, pg.w)));
+      function vcut(rs, isTop) {
+        if (rs.length < 2) return null;
+        const minX = Math.min(...rs.map(r => r.x)), maxX = Math.max(...rs.map(r => r.x1));
+        const need = isTop ? Math.max(4, rs.length * 0.12) : 1, allow = isTop ? rs.length * 0.04 : 0;
+        let best = null;
+        for (let x = minX + 6; x <= maxX - 6; x += 2) {
+          let cross = 0, lmax = -Infinity, rmin = Infinity; const L = [], R = [], F = [];
+          for (const t of rs) { if (t.x < x - 1 && t.x1 > x + 1) { cross++; F.push(t); } else if (t.x1 <= x + 1) { L.push(t); lmax = Math.max(lmax, t.x1); } else { R.push(t); rmin = Math.min(rmin, t.x); } }
+          if (L.length < need || R.length < need || cross > allow) continue;
+          const width = rmin - lmax; if (width < (isTop ? 10 : 9)) continue;
+          if (isTop && (chars(L) < total * 0.12 || chars(R) < total * 0.12)) continue; // a narrow column of dates is not a sidebar
+          const real = a => a.filter(t => t.text.replace(/[^\p{L}\p{N}]/gu, "").length >= 3).length;
+          const bc = chars(L) + chars(R);
+          if (!isTop && (real(L) < 1 || real(R) < 1 || chars(L) < bc * 0.08 || chars(R) < bc * 0.08)) continue; // a strip of bullet symbols is not a column
+          const score = width - cross * 50;
+          if (!best || score > best.score) best = { score, L, R, F };
+        }
+        return best ? [best.L, best.R, best.F] : null;
+      }
+      function gutters(rs) { // x-intervals no text crosses, with text on both sides
+        if (rs.length < 2) return [];
+        const minX = Math.min(...rs.map(r => r.x)), maxX = Math.max(...rs.map(r => r.x1)), out = [];
+        for (let x = minX + 4; x <= maxX - 4; x += 2) {
+          if (rs.some(t => t.x < x - 1 && t.x1 > x + 1)) continue;
+          const last = out[out.length - 1];
+          if (last && x - last[1] <= 2) last[1] = x; else out.push([x, x]);
+        }
+        return out.filter(g => g[1] - g[0] >= 6);
+      }
+      function sameCols(a, b) { return a.length && b.length && (a.length <= b.length ? a : b).every(g => (a.length <= b.length ? b : a).some(h => g[0] <= h[1] && h[0] <= g[1])); }
+      function cut(rs, col, depth) {
+        if (!rs.length) return;
+        if (depth > 10) { leaves.push({ runs: rs, col }); return; }
+        const v = vcut(rs, false);
+        if (v && v[0].length && v[1].length) { cut(v[0], col, depth + 1); cut(v[1], col, depth + 1); return; }
+        // rows: split at vertical gaps bigger than ~3/4 of a line
+        const sorted = rs.slice().sort((a, b) => b.y - a.y), rows = [];
+        for (const r of sorted) { const row = rows[rows.length - 1]; if (row && row.y - r.y < Math.max(row.size, r.size) * 0.4) { row.rs.push(r); row.bottom = Math.min(row.bottom, r.y); row.size = Math.max(row.size, r.size); } else rows.push({ y: r.y, bottom: r.y, size: r.size, rs: [r] }); }
+        const parts = []; let curp = [];
+        rows.forEach((row, i) => {
+          const prev = rows[i - 1];
+          if (prev && prev.bottom - row.y - row.size > Math.max(prev.size, row.size) * 0.75 && curp.length) { parts.push(curp); curp = []; }
+          curp.push(...row.rs);
+        });
+        if (curp.length) parts.push(curp);
+        // keep a row of column headings together with the rows under it when they share the same column gaps
+        const merged = [];
+        for (const p of parts) {
+          const last = merged[merged.length - 1];
+          if (last && sameCols(gutters(last), gutters(p))) merged[merged.length - 1] = last.concat(p); else merged.push(p);
+        }
+        if (merged.length > 1) merged.forEach(p => cut(p, col, depth + 1));
+        else if (merged.length === 1 && parts.length > 1 && merged[0].length === rs.length && vcut(merged[0], false)) cut(merged[0], col, depth + 1);
+        else leaves.push({ runs: rs, col });
+      }
+    });
+    return out;
+  }
+  function toLines(rs, col, page, pw) {
+    rs = rs.slice().sort((a, b) => b.y - a.y || a.x - b.x);
+    const ls = [];
+    for (const r of rs) {
+      const l = ls.find(l => Math.abs(l.y - r.y) < Math.max(l.size, r.size) * 0.4);
+      if (l) l.runs.push(r); else ls.push({ y: r.y, size: r.size, runs: [r] });
+    }
+    return ls.map(l => {
+      l.runs.sort((a, b) => a.x - b.x);
+      let text = "", prev = null, nb = 0, nt = 0;
+      for (const r of l.runs) {
+        if (prev && r.x - prev.x1 > r.size * 0.15 && !/\s$/.test(text)) text += r.x - prev.x1 > r.size * 3 ? "   " : " ";
+        text += r.text; prev = r; nt += r.text.length; if (r.bold) nb += r.text.length;
+      }
+      return { text: text.replace(/[ \t]+$/, ""), x: l.runs[0].x, x1: prev.x1, y: l.y, size: Math.max(...l.runs.map(r => r.size)), bold: nb / nt > 0.6, boldStart: !!l.runs[0].bold, col, page, pw };
+    }).sort((a, b) => b.y - a.y);
+  }
+  function linesFromText(text) {
+    const out = []; let gapNext = 0, y = 100000;
+    text.replace(/\r/g, "").split("\n").forEach(raw => {
+      const t = raw.replace(/[\u200b-\u200d\ufeff]/g, "").replace(/\t/g, "   ");
+      if (!t.trim()) { gapNext = 1; return; }
+      y -= 14 + gapNext * 10;
+      out.push({ text: t.trim(), x: t.length - t.trimStart().length, x1: 0, y, size: 10, bold: false, boldStart: false, col: "main", page: 0, gap: gapNext });
+      gapNext = 0;
+    });
+    return out;
+  }
+
+  /* ---------- lines -> CV ---------- */
+  function build(lines, fromPdf) {
+    const notes = [];
+    lines = lines.filter(l => !/^(page|sida) \d+( (of|av) \d+)?$/i.test(l.text.trim()) && !/^\d+\s*(\/|of|av)\s*\d+$/i.test(l.text.trim()));
+    if (!lines.length) return null;
+    const sizes = []; lines.forEach(l => { for (let k = 0; k < Math.min(l.text.length, 80); k++) sizes.push(l.size); });
+    sizes.sort((a, b) => a - b);
+    const body = sizes[Math.floor(sizes.length / 2)] || 10;
+    // gaps between consecutive lines in the same column (pdf only)
+    lines.forEach((l, i) => { const p = lines[i - 1]; if (fromPdf) l.gap = p && p.col === l.col && p.page === l.page ? (p.y - l.y) / Math.max(p.size, l.size) : 9; });
+
+    const D = { name: "", headline: "", subline: "", contacts: [], profile: "", profileTitle: "Profile", main: [], side: [], top: null };
+    const used = new Set();
+    // ---- name: biggest text near the top of page 1 ----
+    const p1 = lines.filter(l => l.page === 0), topY = Math.max(...p1.map(l => l.y));
+    let nameL = null;
+    if (fromPdf) {
+      const cands = p1.filter(l => l.y > topY - 260 && l.text.length <= 40 && !EMAIL.test(l.text) && !/\d{3}/.test(l.text));
+      nameL = cands.sort((a, b) => b.size - a.size)[0];
+      if (nameL && nameL.size < body * 1.25) nameL = cands.find(l => l.bold) || p1[0];
+    } else nameL = lines.find(l => !EMAIL.test(l.text) && !PHONE.test(l.text) && l.text.length <= 40) || lines[0];
+    if (nameL) { D.name = isCaps(nameL.text) ? titleCase(nameL.text) : nameL.text.trim(); used.add(nameL); }
+    // repeated name on later pages (two-page CVs)
+    lines.forEach(l => { if (l !== nameL && l.page > 0 && nameL && norm(l.text) === norm(nameL.text)) used.add(l); });
+
+    const isHeading = l => {
+      const t = l.text.trim().replace(/[:：]$/, "");
+      if (used.has(l) || BULLET.test(l.text) || t.length > 42 || t.split(/\s+/).length > 5 || /\d/.test(t) || /[.,;]$/.test(t) || EMAIL.test(t)) return false;
+      const cat = catOf(t), caps = isCaps(t);
+      if (cat) return fromPdf ? caps || l.bold || l.size >= body * 1.08 : caps || l.gap || /:$/.test(l.text.trim()) || t.split(/\s+/).length <= 3;
+      if (!fromPdf) return caps && t.replace(/[^A-ZÅÄÖ]/g, "").length >= 4;
+      return (caps && t.replace(/[^A-ZÅÄÖ]/g, "").length >= 3 && (l.bold || l.size >= body * 0.98) && t.split(/\s+/).length <= 4) || (l.bold && l.size >= body * 1.25 && t.split(/\s+/).length <= 4 && !/,/.test(t));
+    };
+    const contactBits = t => {
+      const bits = t.split(/\s+[·•|]\s+|\s{3,}|\s+\|\s+|\s+-\s+(?=\S*[@\d])/).map(x => x.trim()).filter(Boolean);
+      return bits.filter(b => EMAIL.test(b) || (PHONE.test(b) && b.replace(/\D/g, "").length >= 7 && !HAS_RANGE.test(b)) || URL.test(b));
+    };
+    const addContact = b => {
+      b = b.replace(/^(e-?post|e-?mail|mail|tel(efon)?|phone|mob(il|ile)?|linkedin|web(site)?|github|adress|address)\s*:\s*/i, "").trim();
+      if (b && !D.contacts.some(c => c.text === b)) D.contacts.push({ text: b, link: "" });
+    };
+
+    // ---- header: lines between the name and the first heading (same column) ----
+    const startI = nameL ? lines.indexOf(nameL) : -1;
+    for (let i = startI + 1; i < lines.length; i++) {
+      const l = lines[i]; if (used.has(l)) continue;
+      if (l.page !== 0 || (nameL && l.col !== nameL.col) || isHeading(l)) break;
+      const cb = contactBits(l.text);
+      if (cb.length) { cb.forEach(addContact); used.add(l); continue; }
+      if (l.text.length > 90 || BULLET.test(l.text) || DATE_ONLY.test(l.text)) break;
+      if (!D.headline) D.headline = l.text.trim(); else if (!D.subline) D.subline = l.text.trim(); else break;
+      used.add(l);
+    }
+    // contacts anywhere else on the page (sidebars, footers)
+    lines.forEach(l => { if (used.has(l)) return; const cb = contactBits(l.text); if (cb.length && cb.join(" ").length >= l.text.replace(/\s+/g, " ").length * 0.6) { cb.forEach(addContact); used.add(l); } });
+
+    // ---- sections ----
+    const secs = []; let cur = null;
+    const intro = { main: [], side: [] };
+    for (const l of lines) {
+      if (used.has(l)) continue;
+      if (isHeading(l)) { cur = { title: l.text.trim().replace(/[:：]$/, ""), cat: catOf(l.text), col: l.col, lines: [], page: l.page, hx: l.x, pw: l.pw || 595 }; secs.push(cur); continue; }
+      if (cur && cur.col === l.col) cur.lines.push(l);
+      else if (cur && !fromPdf) cur.lines.push(l);
+      else { // text before the first heading of this column
+        const owner = [...secs].reverse().find(s => s.col === l.col);
+        if (owner) owner.lines.push(l); else intro[l.col].push(l);
+      }
+    }
+    // side text before its first heading: a small box (like the editor's own text box), else contacts/notes
+    if (intro.side.length) {
+      const t = intro.side.map(l => l.text.trim());
+      if (t.length <= 6 && t.every(x => x.length <= 32)) { D.top = { mode: "box", boxTitle: t[0], boxLines: t.slice(1) }; }
+      else secs.unshift({ title: "", cat: "other", col: "side", lines: intro.side });
+    }
+    if (intro.main.length) {
+      const txt = joinPara(intro.main);
+      if (txt.length > 60) D.profile = txt; else if (!D.headline) D.headline = txt; else secs.unshift({ title: "", cat: "other", col: "main", lines: intro.main });
+    }
+
+    // the editor's own text box (and similar badges): a short unknown-titled block at the top of the sidebar
+    const firstSide = secs.find(x => x.col === "side" || (x.page === 0 && x.hx > x.pw * 0.5 && secs.indexOf(x) <= 1));
+    if (!D.top && firstSide && !firstSide.cat && firstSide.lines.length <= 5 && firstSide.lines.every(l => l.text.length <= 32) && secs.length > 2) {
+      D.top = { mode: "box", boxTitle: firstSide.title, boxLines: firstSide.lines.map(l => l.text.trim()) };
+      secs.splice(secs.indexOf(firstSide), 1);
+    }
+    // ---- section contents ----
+    for (const s of secs) {
+      if (!s.lines.length) continue;
+      const hasDates = s.lines.filter(l => HAS_RANGE.test(l.text) || DATE_ONLY.test(l.text.trim())).length;
+      let cat = s.cat || (hasDates >= 1 ? "experience" : "other");
+      if (cat === "contact") { s.lines.forEach(l => addContact(l.text.trim())); continue; }
+      if (cat === "profile") {
+        const txt = joinPara(s.lines);
+        if (!D.profile) { D.profile = txt; D.profileTitle = sentence(s.title) || "Profile"; continue; }
+        out(s, { kind: "text", text: txt }); continue;
+      }
+      if ((cat === "other" || cat === "certs") && hasDates >= 2) cat = "experience";
+      if (cat === "experience" || cat === "education") {
+        const { entries, extra } = parseEntries(s.lines);
+        out(s, { kind: "entries", entries });
+        if (extra.length) out({ ...s, title: "" }, { kind: "text", text: extra.join(" ") });
+        continue;
+      }
+      const items = joinItems(s.lines), nb = s.lines.filter(l => BULLET.test(l.text)).length;
+      if (items.length === 1 && items[0].length > 120) out(s, { kind: "text", text: items[0] });
+      else out(s, { kind: nb >= s.lines.length / 2 || cat === "skills" ? "bullets" : "lines", items });
+    }
+    function out(s, body) {
+      const listy = ["skills", "languages", "certs", "other"].includes(s.cat) && body.kind !== "entries";
+      const col = fromPdf && secs.some(x => x.col === "side") ? s.col : listy ? "side" : "main";
+      (col === "side" ? D.side : D.main).push(Object.assign({ title: s.title ? sentence(s.title) : "", items: [], entries: [], text: "" }, body));
+    }
+    if (!D.main.length && !D.side.length && !D.profile) return null;
+    if (!fromPdf && !D.side.length) notes.push("one-col");
+    return { data: D, notes, stats: { lines: lines.length, sections: D.main.length + D.side.length, entries: D.main.concat(D.side).reduce((a, s) => a + s.entries.length, 0), contacts: D.contacts.length, twoCol: fromPdf && lines.some(l => l.col === "side") } };
+  }
+
+  function joinPara(ls) { return ls.map(l => l.text.trim().replace(BULLET, "")).join(" ").replace(/\s+/g, " ").replace(/(\w)- (\w)/g, "$1$2").trim(); }
+  function joinItems(ls) {
+    const items = []; let prev = null;
+    for (const l of ls) {
+      const isB = BULLET.test(l.text), t = l.text.replace(BULLET, "").trim();
+      if (!t) continue;
+      const g = l.gap === undefined ? 0 : l.gap;
+      const cont = prev && !isB && ((/^[a-zåäö(]/.test(t) && g < 2.8) || (/[,&/–-]$/.test(items[items.length - 1]) && g < 1.6)) && !(prev.isB === false && l.bold);
+      if (cont) items[items.length - 1] += " " + t; else items.push(t);
+      prev = { isB, bold: l.bold };
+    }
+    return items.map(x => x.replace(/\s+/g, " ").replace(/[.;]$/, s => s));
+  }
+  function parseHeader(t, e) {
+    let m = t.match(DATE_PAREN);
+    if (m) { e.dates = m[1]; t = t.replace(DATE_PAREN, ""); }
+    else if ((m = t.match(DATE_TAIL)) && m.index > 2) { e.dates = m[1]; t = t.slice(0, m.index); }
+    t = t.replace(/[\s,–—|-]+$/, "").trim();
+    let left = t, right = "";
+    if ((m = t.match(/^(.*?)\s+[–—|]\s+(.+)$/)) || (m = t.match(/^(.*?)\s+-\s+(.+)$/))) { left = m[1]; right = m[2]; }
+    else if ((m = t.match(/^(.+?)\s+(?:at|på|vid|hos)\s+(.+)$/i)) && m[1].split(" ").length <= 5) { left = m[2]; right = m[1]; }
+    const pm = left.match(/^(.*\S),\s*([^,]{2,40})$/);
+    if (pm && !right && TITLE.test(pm[1]) && !TITLE.test(pm[2])) { e.role = pm[1]; e.org = pm[2]; return; } // "Job title, Company"
+    if (pm && !/\d/.test(pm[2])) { e.org = pm[1]; e.place = pm[2]; } else e.org = left;
+    if (right) e.role = right;
+  }
+  function parseEntries(ls) {
+    const entries = [], extra = [];
+    // re-join plain (non-bullet) lines that wrap: previous ends with "," "·" "&" or "/" and the next starts at the same x
+    ls = ls.reduce((acc, l) => {
+      const p = acc[acc.length - 1];
+      if (p && !BULLET.test(l.text) && !BULLET.test(p.text) && /[,·&/]$/.test(p.text.trim()) && Math.abs(l.x - p.x) < 3 && (l.gap === undefined || l.gap < 1.7)) acc[acc.length - 1] = { ...p, text: p.text.trim() + " " + l.text.trim() };
+      else acc.push(l);
+      return acc;
+    }, []);
+    let cur = null, lastB = null, pend = 0;
+    const ne = () => (cur = { org: "", place: "", role: "", dates: "", bullets: [], minor: false }, entries.push(cur), lastB = null, cur);
+    for (let i = 0; i < ls.length; i++) {
+      const l = ls[i], raw = l.text.trim(), next = ls[i + 1];
+      let isB = BULLET.test(l.text); const t = raw.replace(BULLET, "").trim();
+      if (!t) { if (isB) pend++; continue; } // bullet symbols on lines of their own (some copy-pastes)
+      if (!isB && lastB && cur && cur.bullets.length && /^[a-zåäö(]/.test(t)) { cur.bullets[cur.bullets.length - 1] += " " + t; continue; }
+      if (pend && !isB && !DATE_ONLY.test(t)) { isB = true; pend--; }
+      // a line listing several short jobs with dates, e.g. "Earlier: A (2009–2010) · B (2010–2012)"
+      if (!isB && (raw.match(new RegExp(HAS_RANGE.source, "gi")) || []).length >= 2 && /[·;]/.test(raw)) { extra.push(raw); cur = null; continue; }
+      if (isB) { if (!cur) ne(); cur.bullets.push(t); lastB = l; continue; }
+      if (DATE_ONLY.test(t)) {
+        if (!cur || (cur.dates && HAS_RANGE.test(cur.dates) && cur.bullets.length)) ne();
+        if (NOW_ONLY.test(t) && cur.dates) cur.dates = cur.dates.replace(/[\s–—-]+$/, "") + " – " + t.replace(/^[\s–—-]+/, "");
+        else if (!cur.dates || HAS_RANGE.test(t) || NOW_ONLY.test(t)) cur.dates = t.replace(/^\(|\)$/g, "");
+        continue;
+      }
+      // continuation of a wrapped bullet
+      if (lastB && cur && cur.bullets.length && l.x >= lastB.x + 3 && (l.gap === undefined || l.gap < 1.7) && !l.boldStart) { cur.bullets[cur.bullets.length - 1] += " " + t; continue; }
+      const header = l.boldStart || HAS_RANGE.test(t) || (next && DATE_ONLY.test(next.text.trim()) && t.length < 110) || (!cur && t.length < 110);
+      if (header && !(cur && !cur.org && !cur.role && !cur.bullets.length && !cur.dates)) { ne(); parseHeader(t, cur); continue; }
+      if (header && cur && !cur.org) { parseHeader(t, cur); continue; }
+      if (cur && !cur.role && !cur.bullets.length && t.length < 80) { cur.role = t; continue; }
+      if (cur) { cur.bullets.push(t); lastB = l; continue; }
+      ne(); parseHeader(t, cur);
+    }
+    entries.forEach(e => { if (!e.bullets.length && !e.role && entries.length > 2) e.minor = false; e.bullets = e.bullets.map(b => b.replace(/\s+/g, " ").replace(/(\w)- (\w)/g, "$1$2")); });
+    return { entries: entries.filter(e => e.org || e.role || e.bullets.length), extra };
+  }
+
+  return {
+    fromPdf(buf) {
+      const pages = PDFText.extract(buf), chars = pages.reduce((a, p) => a + p.runs.reduce((b, r) => b + r.text.length, 0), 0);
+      if (chars < 40) return { error: "no-text" };
+      return build(linesFromPdf(pages), true) || { error: "no-structure" };
+    },
+    fromText(text) { return build(linesFromText(text), false) || { error: "no-structure" }; },
+    _lines: linesFromPdf
+  };
+})();
+
 
 /* ======================= keyword checker ======================= */
 const STOP = new Set(("a about above across after again against all also am an and any are as at be because been before being below between both but by can could did do does doing down during each either else etc few for from further get gets had has have having he her here hers him his how i if in into is it its itself just may me might more most must my no nor not now of off on once only or other our ours out over own per same she should so some such than that the their them then there these they this those through to too under until up upon us very via was we were what when where which while who whom why will with within would you your yours " +
@@ -1419,15 +2429,30 @@ D = normalize((V.list.find(x => x.id === V.cur) || V.list[0]).data);
 renderVer();
 renderEditor(); renderPage();
 window.addEventListener("resize", fitScale);
-if (FIRST) {
-  const w = document.getElementById("welcome"); w.hidden = false;
+{ // welcome screen on first visit; the same chooser opens from "New…" later
+  const w = document.getElementById("welcome"); let first = FIRST;
+  const show = isFirst => {
+    first = isFirst;
+    document.getElementById("wTitle").innerHTML = isFirst ? 'Welcome to <span style="color:var(--ui-amber)">CV Editor</span>' : "New version";
+    document.getElementById("wIntro").textContent = isFirst ? "Make a CV and a matching cover letter, pick a design, and save it as a PDF. Everything stays on your computer." : "Your current versions stay as they are. Start the new one from:";
+    w.querySelector(".wtips").hidden = !isFirst;
+    w.querySelector('[data-w="blank"] b').textContent = isFirst ? "Start blank" : "Blank CV";
+    w.querySelector('[data-w="example"] b').textContent = isFirst ? "Start from the example" : "The example CV";
+    w.hidden = false;
+  };
+  if (FIRST) show(true);
+  document.getElementById("bNew").onclick = () => show(false);
   w.addEventListener("click", ev => {
+    if (ev.target === w && !first) { w.hidden = true; return; }
     const b = ev.target.closest("[data-w]"); if (!b) return;
     w.hidden = true;
-    if (b.dataset.w === "blank") { const v = V.list.find(x => x.id === V.cur); D = BLANK(); if (v) { v.name = "My CV"; } changed(true); renderVer(); }
-    if (b.dataset.w === "example") { const v = V.list.find(x => x.id === V.cur); if (v) v.name = "Example CV"; saveV(); renderVer(); }
-    if (b.dataset.w === "open") document.getElementById("fileIn").click();
+    const k = b.dataset.w, v = V.list.find(x => x.id === V.cur);
+    if (k === "blank") { if (first) { D = BLANK(); if (v) v.name = "My CV"; changed(true); renderVer(); } else addVersion("New CV", BLANK()); }
+    if (k === "example") { if (first) { if (v) v.name = "Example CV"; saveV(); renderVer(); } else addVersion("Example CV", normalize(clone(EXAMPLE))); }
+    if (k === "open") document.getElementById("fileIn").click();
+    if (k === "import") openImport();
   });
+  document.addEventListener("keydown", ev => { if (ev.key === "Escape" && !w.hidden && !first) w.hidden = true; });
 }
 (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => { fitScale(); checkFit(); });
 fitScale();
