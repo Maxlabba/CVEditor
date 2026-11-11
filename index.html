@@ -70,6 +70,11 @@ textarea{resize:vertical;min-height:60px}
 .crop.round{border-radius:50%}
 .crop:active{cursor:grabbing}
 .cropctl{flex:1;min-width:0}
+.sizes{border:1px solid var(--ui-line);border-radius:8px;padding:8px 10px 6px;margin:10px 0 4px;background:rgba(0,0,0,.12)}
+.sizes-h{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--ui-dim);margin-bottom:4px}
+.szrow{display:grid;grid-template-columns:130px 1fr 44px;align-items:center;gap:8px;font-size:12.5px;margin:4px 0}
+.szrow input{width:100%}
+.szv{text-align:right;color:var(--ui-text);font-variant-numeric:tabular-nums}
 .designs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .dz{background:#0e1830;border:2px solid var(--ui-line);border-radius:9px;padding:8px 4px 6px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px;font-size:12px;color:var(--ui-dim)}
 .dz:hover{border-color:#5a6d92}
@@ -136,11 +141,11 @@ textarea{resize:vertical;min-height:60px}
 .page .tl .box .bl{font-size:10pt;line-height:1.45;color:var(--ink)}
 .page .tl .box .bt + .bl{font-weight:700;font-size:10.5pt}
 .page .head{grid-column:3;grid-row:1}
-.page .name{font-family:var(--fn);font-weight:700;font-size:34pt;line-height:1.1;margin:0 0 9pt;letter-spacing:-.2pt}
-.page.f-modern .name{font-size:30pt;letter-spacing:-.5pt}
-.page .headline{font-family:var(--fl);font-weight:700;font-size:11pt;line-height:1.4}
-.page .subline{font-family:var(--fl);font-size:10pt;color:var(--grey);line-height:1.45}
-.page .contacts{font-family:var(--fl);font-size:9pt;color:var(--accent);line-height:1.4;margin-top:3pt}
+.page .name{font-family:var(--fn);font-weight:700;font-size:calc(34pt * var(--nk,1));line-height:1.1;margin:0 0 9pt;letter-spacing:-.2pt}
+.page.f-modern .name{font-size:calc(30pt * var(--nk,1));letter-spacing:-.5pt}
+.page .headline{font-family:var(--fl);font-weight:700;font-size:calc(11pt * var(--bk,1));line-height:1.4}
+.page .subline{font-family:var(--fl);font-size:calc(10pt * var(--bk,1));color:var(--grey);line-height:1.45}
+.page .contacts{font-family:var(--fl);font-size:calc(9pt * var(--bk,1));color:var(--accent);line-height:1.4;margin-top:3pt}
 .page .contacts a,.page .contacts span{white-space:nowrap}
 .page .contacts .long{white-space:normal;overflow-wrap:anywhere}
 .page .contacts{overflow-wrap:anywhere}
@@ -177,24 +182,26 @@ textarea{resize:vertical;min-height:60px}
 .page.nolines .top::after,.page.nolines .node,.page.nolines .vline::before{display:none}
 .page.nolines .top{padding-bottom:4pt}
 
-.page h3{font-family:var(--fh);font-weight:700;font-size:10.5pt;color:var(--accent);text-transform:uppercase;margin:0 0 calc(8pt * (.4 + .6 * var(--sp)));letter-spacing:.1pt}
-.page.f-modern h3{font-size:10pt;letter-spacing:.6pt}
+.page .main{--hk:var(--hm,1)}
+.page .side,.page .band{--hk:var(--hs,1)}
+.page h3{font-family:var(--fh);font-weight:700;font-size:calc(10.5pt * var(--hk,1));color:var(--accent);text-transform:uppercase;margin:0 0 calc(8pt * (.4 + .6 * var(--sp)));letter-spacing:.1pt}
+.page.f-modern h3{font-size:calc(10pt * var(--hk,1));letter-spacing:.6pt}
 .page .sec{margin-bottom:calc(12pt * var(--sp))}
 .page .main .sec{margin-bottom:calc(11pt * var(--sp))}
-.page p.prof{font-size:calc(9.8pt * var(--k) * var(--dk));line-height:var(--lh);margin:0;color:var(--ink)}
+.page p.prof{font-size:calc(9.8pt * var(--k) * var(--dk) * var(--bk,1));line-height:var(--lh);margin:0;color:var(--ink)}
 .page .ent{margin-bottom:calc(6pt * var(--sp))}
-.page .et{font-size:calc(11pt * var(--k) * var(--dk));line-height:1.35;color:var(--ink)}
+.page .et{font-size:calc(11pt * var(--k) * var(--dk) * var(--bk,1));line-height:1.35;color:var(--ink)}
 .page .et b{font-weight:700}
-.page .ent.minor .et{font-size:calc(10.5pt * var(--k) * var(--dk));color:var(--grey)}
+.page .ent.minor .et{font-size:calc(10.5pt * var(--k) * var(--dk) * var(--bk,1));color:var(--grey)}
 .page .ent.minor .et b{color:var(--grey)}
-.page .ed{font-family:var(--fl);font-size:8.5pt;color:var(--light);margin:1pt 0 3pt;text-transform:uppercase;letter-spacing:.2pt}
+.page .ed{font-family:var(--fl);font-size:calc(8.5pt * var(--bk,1));color:var(--light);margin:1pt 0 3pt;text-transform:uppercase;letter-spacing:.2pt}
 .page ul{margin:0;padding:0;list-style:none}
-.page li,.page .lines div,.page .txt{font-size:calc(9.5pt * var(--k) * var(--dk));line-height:var(--lh);color:var(--grey);margin:0 0 calc(3pt * var(--sp))}
+.page li,.page .lines div,.page .txt{font-size:calc(9.5pt * var(--k) * var(--dk) * var(--bk,1));line-height:var(--lh);color:var(--grey);margin:0 0 calc(3pt * var(--sp))}
 .page li{padding-left:11pt;position:relative}
 .page li::before{content:"\2022";position:absolute;left:0;font-family:"CVSans",sans-serif}
 .page .ent li{padding-left:17pt}
 .page .ent li::before{left:6pt}
-.page .side li,.page .side .lines div,.page .band li,.page .band .lines div{font-size:calc(9.3pt * var(--k) * var(--dk));margin-bottom:calc(2.5pt * var(--sp))}
+.page .side li,.page .side .lines div,.page .band li,.page .band .lines div{font-size:calc(9.3pt * var(--k) * var(--dk) * var(--bk,1));margin-bottom:calc(2.5pt * var(--sp))}
 .page li b,.page .lines b{color:var(--ink)}
 .page .txt b{color:var(--grey)}
 
@@ -242,11 +249,11 @@ textarea{resize:vertical;min-height:60px}
 .page.d-timeline.custombg .side b,.page.d-timeline.custombg .band b,.page.d-timeline.custombg .side li::before,.page.d-timeline.custombg .band li::before{color:var(--on)}
 
 /* --- Minimal --- */
-.page.d-minimal .name{font-weight:400;font-size:36pt;letter-spacing:-.5pt}
+.page.d-minimal .name{font-weight:400;font-size:calc(36pt * var(--nk,1));letter-spacing:-.5pt}
 .page.d-minimal.f-modern .name,.page.d-minimal.f-clean .name{font-weight:700}
 .page.d-minimal .headline{color:var(--accent)}
 .page.d-minimal .top{padding-bottom:6pt}
-.page.d-minimal h3{color:var(--ink);font-size:8.6pt;letter-spacing:1.6pt;border-bottom:.6pt solid #cfcfcf;padding-bottom:3pt;margin-bottom:7pt}
+.page.d-minimal h3{color:var(--ink);font-size:calc(8.6pt * var(--hk,1));letter-spacing:1.6pt;border-bottom:.6pt solid #cfcfcf;padding-bottom:3pt;margin-bottom:7pt}
 .page.d-minimal .contacts a{text-decoration:none}
 
 /* --- Classic --- */
@@ -254,17 +261,17 @@ textarea{resize:vertical;min-height:60px}
 .page.d-classic .tl{grid-column:1!important;grid-row:1;justify-content:center;margin-bottom:8pt;padding:0!important}
 .page.d-classic .tl:empty{display:none}
 .page.d-classic .head{grid-column:1!important;grid-row:2}
-.page.d-classic .name{letter-spacing:1.5pt;text-transform:uppercase;font-size:30pt}
+.page.d-classic .name{letter-spacing:1.5pt;text-transform:uppercase;font-size:calc(30pt * var(--nk,1))}
 .page.d-classic h3{display:flex;align-items:center;gap:7pt;text-align:center;letter-spacing:1pt}
 .page.d-classic h3::before,.page.d-classic h3::after{content:"";flex:1;border-top:.8pt solid var(--accent)}
 .page.d-classic .vline::before{display:block;width:.6pt;background:#d0d0d0}
 
 /* ================== COVER LETTER ================== */
-.page .letter{font-size:calc(10.4pt * var(--k) * var(--dk));line-height:calc(var(--lh) + .06);color:var(--ink);max-width:440pt}
+.page .letter{font-size:calc(10.4pt * var(--k) * var(--dk) * var(--bk,1));line-height:calc(var(--lh) + .06);color:var(--ink);max-width:440pt}
 .page .letter p{margin:0 0 calc(9pt * var(--sp))}
 .page .letter .ldate{color:var(--grey);margin-bottom:calc(14pt * var(--sp))}
 .page .letter .lrec{margin-bottom:calc(14pt * var(--sp));white-space:pre-line}
-.page .letter .lsub{font-family:var(--fh);font-weight:700;color:var(--accent);font-size:calc(11pt * var(--dk));margin-bottom:calc(12pt * var(--sp))}
+.page .letter .lsub{font-family:var(--fh);font-weight:700;color:var(--accent);font-size:calc(11pt * var(--dk) * var(--bk,1));margin-bottom:calc(12pt * var(--sp))}
 .page .letter .lsig{font-family:var(--fn);font-weight:700;font-size:calc(13pt * var(--dk));display:block;margin-top:calc(20pt * var(--sp))}
 #pages{display:flex;flex-direction:column;gap:28px;width:595.28pt}
 .vers{display:flex;gap:4px;align-items:center;margin-right:6px;padding-right:10px;border-right:1px solid var(--ui-line)}
@@ -279,7 +286,7 @@ textarea{resize:vertical;min-height:60px}
 .mbox textarea{flex:1;min-height:52vh;font:13px/1.5 Consolas,"Courier New",monospace;margin-top:8px}
 .page .top.mini{padding-bottom:8pt}
 .page .top.mini .tl{display:none}
-.page .top.mini .name{font-size:17pt;margin:0;letter-spacing:0}
+.page .top.mini .name{font-size:calc(17pt * var(--nk,1));margin:0;letter-spacing:0}
 .page .top.mini .pgno{grid-column:-2/-1;grid-row:1;align-self:end;justify-self:end;font-family:var(--fl);font-size:9pt;color:var(--grey)}
 .page.d-banner .top.mini .pgno,.page.d-sidebar.lay-one .top.mini .pgno{color:var(--on)}
 .page.d-classic .top.mini .pgno{grid-row:1;justify-self:end}
@@ -410,6 +417,7 @@ textarea{resize:vertical;min-height:60px}
         <p><b>Copy as text:</b> gives a plain version for job portals that ask you to paste your CV.</p>
         <p><b>Cover letter:</b> switch to <b>Cover letter</b> at the top. It uses the same name, contact details, design and colours as your CV and is saved in the same file. Print it the same way.</p>
         <p><b>Hide without deleting:</b> use <b>Hide</b> on any section or entry to leave it off this version of your CV. It stays in your file so you can bring it back for another job.</p>
+        <p><b>Text sizes:</b> under Layout &amp; style, make the name, headings or body text bigger or smaller. Headings in both columns share one size unless you untick "Same heading size in both columns".</p>
         <p><b>Density:</b> Compact tightens text and spacing slightly so more fits on the page.</p>
         <p><b>Design:</b> six looks to choose from. Each one works with every column layout, font style and colour.</p>
         <p><b>Layout:</b> sidebar left or right, one column, and three font styles. Drag the divider line in the preview to make the sidebar wider or narrower; double-click it to reset. In the one-column layout, sidebar sections appear as a band under the profile.</p>
@@ -485,7 +493,7 @@ const uid = () => Math.random().toString(36).slice(2, 9);
 const SEC = (title, kind, extra) => Object.assign({ id: uid(), title, kind, entries: [], text: "", items: [] }, extra || {});
 const ENT = (org, place, role, dates, bullets, minor) => ({ org, place, role, dates, bullets: bullets || [], minor: !!minor });
 const EXAMPLE = {
-  v: 2, accent: "#2a7bc8", layout: { design: "blueprint", sidebar: "left", lines: true, fonts: "classic", bg: "", density: "normal", pages: 1, sw: 145 },
+  v: 2, accent: "#2a7bc8", layout: { design: "blueprint", sidebar: "left", lines: true, fonts: "classic", bg: "", density: "normal", pages: 1, sw: 145, sz: { name: 100, head: 100, headSide: 100, body: 100, link: true } },
   name: "Alex Andersson",
   headline: "IT Support Technician · CompTIA A+",
   subline: "Seeking a role as IT Support Technician",
@@ -520,7 +528,7 @@ letter: { date: "", recipient: "Hiring Manager\nExample Company AB\nStockholm", 
   ]
 };
 const BLANK = () => ({
-  v: 2, accent: "#2a7bc8", layout: { design: "blueprint", sidebar: "left", lines: true, fonts: "classic", bg: "", density: "normal", pages: 1, sw: 145 },
+  v: 2, accent: "#2a7bc8", layout: { design: "blueprint", sidebar: "left", lines: true, fonts: "classic", bg: "", density: "normal", pages: 1, sw: 145, sz: { name: 100, head: 100, headSide: 100, body: 100, link: true } },
   name: "Your Name", headline: "Your title or current studies", subline: "",
   contacts: [{ text: "Phone", link: "" }, { text: "email@example.com", link: "" }],
   top: { mode: "none", src: "", size: 130, shape: "round", zoom: 1, px: 50, py: 50, boxTitle: "", boxColor: "#c8102e", boxLines: [""] },
@@ -592,6 +600,7 @@ function normalize(d) {
   d = Object.assign({}, b, d || {});
   d.top = Object.assign({}, b.top, d.top || {});
   d.layout = Object.assign({}, b.layout, d.layout || {});
+  d.layout.sz = Object.assign({}, b.layout.sz, (d.layout && d.layout.sz) || {});
   d.letter = Object.assign({}, b.letter, d.letter || {});
   ["contacts", "main", "side"].forEach(k => { if (!Array.isArray(d[k])) d[k] = []; });
   d.main.concat(d.side).forEach(s => {
@@ -691,8 +700,8 @@ function renderPage() {
   const two = !letter && Number(L.pages) === 2;
   const cls = "page lay-" + (oneCol ? "one" : L.sidebar === "right" ? "right" : "left") + (L.lines ? "" : " nolines") + " f-" + (L.fonts || "classic") + " d-" + design + " den-" + (L.density || "normal") + (letter ? " is-letter" : "") + (L.bg ? " custombg" : "");
   const bg = L.bg || D.accent || "#2a7bc8", light = lum(bg) > 0.55;
-  const SW = swOf(L);
-  const vars = `--sw:${SW}pt;--accent:${D.accent || "#2a7bc8"};--bgc:${bg};--panel:${L.bg ? L.bg : tint(D.accent, .07)};--tint30:${tint(D.accent, .3)};--tint35:${tint(D.accent, .35)};--on:${light ? "#111" : "#fff"};--on2:${light ? "#333" : "rgba(255,255,255,.9)"}`;
+  const SW = swOf(L), Z = szOf(L);
+  const vars = `--sw:${SW}pt;--nk:${Z.name / 100};--hm:${Z.head / 100};--hs:${(Z.link ? Z.head : Z.headSide) / 100};--bk:${Z.body / 100};--accent:${D.accent || "#2a7bc8"};--bgc:${bg};--panel:${L.bg ? L.bg : tint(D.accent, .07)};--tint30:${tint(D.accent, .3)};--tint35:${tint(D.accent, .35)};--on:${light ? "#111" : "#fff"};--on2:${light ? "#333" : "rgba(255,255,255,.9)"}`;
   const t = D.top; let tl = "", overhang = 0;
   const lap = (design === "blueprint" && L.lines) || design === "banner" || (design === "sidebar" && oneCol) ? 1 : 0;
   if (t.mode === "image" && t.src) {
@@ -816,6 +825,14 @@ function moveItem(fromArr, fromI, toArr, toI, pg) {
   flash("Moved");
 }
 // click in preview → jump to the matching editor block
+/* ---------- text sizes (percent of the design's own sizes) ---------- */
+const SZ = { name: [70, 130], head: [80, 150], headSide: [80, 150], body: [85, 120] };
+function szOf(L) {
+  const z = (L && L.sz) || {}, out = { link: z.link !== false };
+  for (const k in SZ) { const v = Number(z[k]); out[k] = v >= SZ[k][0] && v <= SZ[k][1] ? Math.round(v) : 100; }
+  return out;
+}
+
 /* ---------- drag the column divider to resize the sidebar ---------- */
 const SW_MIN = 110, SW_MAX = 240, SW_STD = 145;
 function swOf(L) { const v = Number(L && L.sw); return v >= SW_MIN && v <= SW_MAX ? Math.round(v) : SW_STD; }
@@ -915,6 +932,10 @@ function secEditor(g, si) {
       <div><label class="f">Type</label><select data-p="${base}.kind">${KINDS.map(([v, n]) => `<option value="${v}" ${s.kind === v ? "selected" : ""}>${n}</option>`).join("")}</select></div></div>
       ${body}</div>`;
 }
+function szRow(k, label) {
+  const v = szOf(D.layout)[k];
+  return `<div class="szrow"><span class="szl">${label}</span><input type="range" min="${SZ[k][0]}" max="${SZ[k][1]}" step="1" data-p="layout.sz.${k}" data-out="szv_${k}" value="${v}"><span class="szv" id="szv_${k}">${v}%</span></div>`;
+}
 function colourRow(key, val, presets) {
   return `<div class="row"><label class="btn small cpick" title="Pick any colour"><span class="sw" style="background:${esc(val)}"></span>Custom…<input type="color" data-c="${key}" value="${esc(val)}"></label>
     <input type="text" data-c="${key}" value="${esc(val)}" style="width:86px;flex:none;font-family:monospace;font-size:12px" maxlength="7" spellcheck="false"></div>
@@ -949,6 +970,14 @@ function renderEditor() {
       <button class="btn small ${Number(L.pages) === 2 ? "on" : ""}" data-a="pages" data-v="2">Two pages</button>
     </div>
     ${Number(L.pages) === 2 ? `<div class="hint">Choose which sections go on page 2 with the "Page 1 / Page 2" button on each section, or drag them onto page 2 in the preview.</div>` : ""}
+    <div class="sizes">
+      <div class="sizes-h"><span>Text sizes</span><button class="btn small" data-a="szreset" ${["name", "head", "headSide", "body"].every(k => szOf(L)[k] === 100) ? "disabled" : ""}>Reset</button></div>
+      ${szRow("name", "Name")}
+      ${szRow("head", L.sidebar === "none" || szOf(L).link ? "Headings" : "Main headings")}
+      ${L.sidebar !== "none" ? `<label class="chk" style="margin-top:2px"><input type="checkbox" data-p="layout.sz.link" data-rerender="1" ${szOf(L).link ? "checked" : ""}> Same heading size in both columns</label>` : ""}
+      ${L.sidebar !== "none" && !szOf(L).link ? szRow("headSide", "Sidebar headings") : ""}
+      ${szRow("body", "Body text")}
+    </div>
     <label class="f">Density – tighten to fit more on the page</label>
     <div class="seg">
       ${[["compact", "Compact"], ["normal", "Normal"], ["roomy", "Roomy"]].map(([v, n]) => `<button class="btn small ${(L.density || "normal") === v ? "on" : ""}" data-a="den" data-v="${v}">${n}</button>`).join("")}
@@ -1082,6 +1111,8 @@ pE.addEventListener("input", ev => {
   setP(p, v);
   if (p === "top.size") document.getElementById("szv").textContent = v;
   if (p === "layout.sw") { const o = document.getElementById("swv"); if (o) o.textContent = v; }
+  if (el.dataset.out) { const o = document.getElementById(el.dataset.out); if (o) o.textContent = v + "%"; }
+  if (p === "layout.sz.link" && v) D.layout.sz.headSide = D.layout.sz.head; // linking again: sidebar follows the main size
   if (/(\.title|\.org|\.role)$/.test(p)) {
     const sub = el.closest(".sub"); const head = sub && sub.querySelector(".t");
     if (head) { const o = getP(p.replace(/\.(title|org|role)$/, "")); head.textContent = o.kind !== undefined ? (o.title || "Untitled section") : (o.org || o.role || "New entry"); }
@@ -1127,6 +1158,7 @@ pE.addEventListener("click", ev => {
   if (a === "lay") { snapshot(); D.layout.sidebar = b.dataset.v; return changed(true); }
   if (a === "font") { snapshot(); D.layout.fonts = b.dataset.v; return changed(true); }
   if (a === "hide") { snapshot(); const o = getP(b.dataset.path); o.hidden = !o.hidden; return changed(true); }
+  if (a === "szreset") { snapshot(); Object.assign(D.layout.sz, { name: 100, head: 100, headSide: 100, body: 100 }); return changed(true); }
   if (a === "swstd") { snapshot(); D.layout.sw = SW_STD; return changed(true); }
   if (a === "pages") { snapshot(); D.layout.pages = Number(b.dataset.v); return changed(true); }
   if (a === "pg") { snapshot(); const o = getP(b.dataset.path); o.p2 = !o.p2; return changed(true); }
