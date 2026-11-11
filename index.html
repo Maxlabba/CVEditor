@@ -123,7 +123,7 @@ textarea{resize:vertical;min-height:60px}
 .page.den-roomy{--dk:1.05;--sp:1.3;--lh:1.5}
 .page.f-modern{--fn:"CVHead","CVSans",Arial,sans-serif;--fb:"CVSans",Calibri,Arial,sans-serif;--fh:"CVHead","CVSans",Arial,sans-serif;--k:1.07}
 .page.f-clean{--fn:"CVSans",Calibri,Arial,sans-serif;--fb:"CVSans",Calibri,Arial,sans-serif;--fh:"CVSans",Calibri,Arial,sans-serif;--k:1.07}
-.page .top{display:grid;grid-template-columns:145pt 24pt 1fr;position:relative;padding-bottom:8pt}
+.page .top{display:grid;grid-template-columns:var(--sw,145pt) 24pt 1fr;position:relative;padding-bottom:8pt}
 .page .top::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1.6pt;background:var(--accent);transform:translateY(50%)}
 .page .node{position:absolute;bottom:0;width:7.2pt;height:7.2pt;border:1.6pt solid var(--accent);background:#fff;border-radius:50%;transform:translate(-50%,50%);z-index:3}
 .page .tl{grid-column:1;grid-row:1;align-self:end;display:flex;justify-content:center;position:relative;z-index:2}
@@ -131,7 +131,7 @@ textarea{resize:vertical;min-height:60px}
 .page .tl img.round{border-radius:50%;padding:2pt}
 .page .tl .pic{background-color:#fff;background-repeat:no-repeat;box-shadow:0 0 0 2pt #fff;border-radius:3pt}
 .page .tl .pic.round{border-radius:50%}
-.page .tl .box{width:145pt;background:#fff;border:2pt solid #c8102e;border-radius:8pt;padding:10pt 6pt 9pt;text-align:center;font-family:var(--fl)}
+.page .tl .box{width:var(--sw,145pt);background:#fff;border:2pt solid #c8102e;border-radius:8pt;padding:10pt 6pt 9pt;text-align:center;font-family:var(--fl)}
 .page .tl .box .bt{font-weight:700;font-size:15pt;color:#c8102e;margin-bottom:6pt;line-height:1.2}
 .page .tl .box .bl{font-size:10pt;line-height:1.45;color:var(--ink)}
 .page .tl .box .bt + .bl{font-weight:700;font-size:10.5pt}
@@ -146,13 +146,21 @@ textarea{resize:vertical;min-height:60px}
 .page .contacts{overflow-wrap:anywhere}
 .page .contacts a{color:var(--accent);text-decoration:underline;-webkit-user-drag:none}
 .page .contacts .sep{color:var(--grey);margin:0 2.5pt}
-.page .cols{flex:1;display:grid;grid-template-columns:145pt 24pt 1fr;min-height:0}
+.page .cols{flex:1;display:grid;grid-template-columns:var(--sw,145pt) 24pt 1fr;min-height:0}
 .page .vline{grid-column:2;grid-row:1;position:relative}
 .page .vline::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:1.6pt;background:var(--accent);transform:translateX(-50%)}
+/* the divider can be dragged to change the sidebar width (screen only) */
+@media screen{
+  .page:not(.lay-one) .vline{cursor:col-resize;touch-action:none}
+  .page:not(.lay-one) .vline:hover::before,.page.sizing .vline::before{width:3pt;display:block;background:var(--accent)}
+  .page:not(.d-blueprint):not(.lay-one) .vline:hover::before,.page.sizing:not(.d-blueprint) .vline::before{opacity:.45}
+  .page.sizing{cursor:col-resize;user-select:none}
+  .swtip{position:absolute;top:6pt;transform:translateX(-50%);background:#16233d;color:#fff;font:600 8pt/1 "Segoe UI",Arial,sans-serif;padding:4pt 6pt;border-radius:4pt;pointer-events:none;z-index:9;white-space:nowrap}
+}
 .page .side{grid-column:1;grid-row:1;padding-top:calc(var(--overhang,0pt) + 14pt);overflow:hidden;min-height:0}
 .page .main{grid-column:3;grid-row:1;padding-top:calc(14pt * var(--sp));overflow:hidden;min-height:0}
 /* sidebar on the right */
-.page.lay-right .top,.page.lay-right .cols{grid-template-columns:1fr 24pt 145pt}
+.page.lay-right .top,.page.lay-right .cols{grid-template-columns:1fr 24pt var(--sw,145pt)}
 .page.lay-right .tl,.page.lay-right .side{grid-column:3}
 .page.lay-right .head,.page.lay-right .main{grid-column:1}
 /* one column */
@@ -197,7 +205,7 @@ textarea{resize:vertical;min-height:60px}
 .page .top{z-index:2} /* header (dots, badge) above the column divider */
 
 /* --- Solid sidebar --- */
-.page.d-sidebar::before{content:"";position:absolute;top:0;bottom:0;left:0;width:205pt;background:var(--bgc);z-index:0}
+.page.d-sidebar::before{content:"";position:absolute;top:0;bottom:0;left:0;width:calc(var(--sw,145pt) + 60pt);background:var(--bgc);z-index:0}
 .page.d-sidebar.lay-right::before{left:auto;right:0}
 .page.d-sidebar .side h3{color:var(--on)}
 .page.d-sidebar .side li,.page.d-sidebar .side .lines div,.page.d-sidebar .side .txt{color:var(--on2)}
@@ -404,7 +412,7 @@ textarea{resize:vertical;min-height:60px}
         <p><b>Hide without deleting:</b> use <b>Hide</b> on any section or entry to leave it off this version of your CV. It stays in your file so you can bring it back for another job.</p>
         <p><b>Density:</b> Compact tightens text and spacing slightly so more fits on the page.</p>
         <p><b>Design:</b> six looks to choose from. Each one works with every column layout, font style and colour.</p>
-        <p><b>Layout:</b> sidebar left or right, one column, and three font styles. In the one-column layout, sidebar sections appear as a band under the profile.</p>
+        <p><b>Layout:</b> sidebar left or right, one column, and three font styles. Drag the divider line in the preview to make the sidebar wider or narrower; double-click it to reset. In the one-column layout, sidebar sections appear as a band under the profile.</p>
         <p><b>Bold text:</b> wrap words in double asterisks, for example <code>**B driving licence**</code>.</p>
         <p><b>Top image:</b> upload a certification badge, a logo or a photo, or use a text box instead (handy for "Exam scheduled" notes). For photos, pick a shape and drag the picture in the crop box to position it; the slider or mouse wheel zooms.</p>
         <p><b>Recruiters scan the top left first.</b> Put what matters most for the job there and at the top of each column.</p>
@@ -477,7 +485,7 @@ const uid = () => Math.random().toString(36).slice(2, 9);
 const SEC = (title, kind, extra) => Object.assign({ id: uid(), title, kind, entries: [], text: "", items: [] }, extra || {});
 const ENT = (org, place, role, dates, bullets, minor) => ({ org, place, role, dates, bullets: bullets || [], minor: !!minor });
 const EXAMPLE = {
-  v: 2, accent: "#2a7bc8", layout: { design: "blueprint", sidebar: "left", lines: true, fonts: "classic", bg: "", density: "normal", pages: 1 },
+  v: 2, accent: "#2a7bc8", layout: { design: "blueprint", sidebar: "left", lines: true, fonts: "classic", bg: "", density: "normal", pages: 1, sw: 145 },
   name: "Alex Andersson",
   headline: "IT Support Technician · CompTIA A+",
   subline: "Seeking a role as IT Support Technician",
@@ -512,7 +520,7 @@ letter: { date: "", recipient: "Hiring Manager\nExample Company AB\nStockholm", 
   ]
 };
 const BLANK = () => ({
-  v: 2, accent: "#2a7bc8", layout: { design: "blueprint", sidebar: "left", lines: true, fonts: "classic", bg: "", density: "normal", pages: 1 },
+  v: 2, accent: "#2a7bc8", layout: { design: "blueprint", sidebar: "left", lines: true, fonts: "classic", bg: "", density: "normal", pages: 1, sw: 145 },
   name: "Your Name", headline: "Your title or current studies", subline: "",
   contacts: [{ text: "Phone", link: "" }, { text: "email@example.com", link: "" }],
   top: { mode: "none", src: "", size: 130, shape: "round", zoom: 1, px: 50, py: 50, boxTitle: "", boxColor: "#c8102e", boxLines: [""] },
@@ -683,11 +691,12 @@ function renderPage() {
   const two = !letter && Number(L.pages) === 2;
   const cls = "page lay-" + (oneCol ? "one" : L.sidebar === "right" ? "right" : "left") + (L.lines ? "" : " nolines") + " f-" + (L.fonts || "classic") + " d-" + design + " den-" + (L.density || "normal") + (letter ? " is-letter" : "") + (L.bg ? " custombg" : "");
   const bg = L.bg || D.accent || "#2a7bc8", light = lum(bg) > 0.55;
-  const vars = `--accent:${D.accent || "#2a7bc8"};--bgc:${bg};--panel:${L.bg ? L.bg : tint(D.accent, .07)};--tint30:${tint(D.accent, .3)};--tint35:${tint(D.accent, .35)};--on:${light ? "#111" : "#fff"};--on2:${light ? "#333" : "rgba(255,255,255,.9)"}`;
+  const SW = swOf(L);
+  const vars = `--sw:${SW}pt;--accent:${D.accent || "#2a7bc8"};--bgc:${bg};--panel:${L.bg ? L.bg : tint(D.accent, .07)};--tint30:${tint(D.accent, .3)};--tint35:${tint(D.accent, .35)};--on:${light ? "#111" : "#fff"};--on2:${light ? "#333" : "rgba(255,255,255,.9)"}`;
   const t = D.top; let tl = "", overhang = 0;
   const lap = (design === "blueprint" && L.lines) || design === "banner" || (design === "sidebar" && oneCol) ? 1 : 0;
   if (t.mode === "image" && t.src) {
-    const sz = Number(t.size) || 130;
+    const sz = oneCol ? Number(t.size) || 130 : Math.min(Number(t.size) || 130, SW);
     if (t.shape === "rect") {
       overhang = Math.round(sz * 0.2) * lap;
       tl = `<img class="rect" src="${esc(t.src)}" style="width:${sz}pt;height:auto;max-height:${Math.round(sz * 1.5)}pt;margin-bottom:-${overhang}pt" alt="">`;
@@ -707,8 +716,8 @@ function renderPage() {
     return h ? `<a href="${esc(h)}"${cls}>${esc(c.text)}</a>` : `<span${cls}>${esc(c.text)}</span>`;
   }).join('<span class="sep">·</span><wbr>'); // <wbr>: the row may break between items
   const nodes = oneCol ? `<span class="node" style="left:0"></span><span class="node" style="left:100%"></span>`
-              : L.sidebar === "right" ? `<span class="node" style="left:0"></span><span class="node" style="left:calc(100% - 157pt)"></span>`
-              : `<span class="node" style="left:157pt"></span><span class="node" style="left:100%"></span>`;
+              : L.sidebar === "right" ? `<span class="node" style="left:0"></span><span class="node" style="left:calc(100% - var(--sw,145pt) - 12pt)"></span>`
+              : `<span class="node" style="left:calc(var(--sw,145pt) + 12pt)"></span><span class="node" style="left:100%"></span>`;
   const secs = (g, pg) => getP(g).map((s, i) => (two ? (s.p2 ? 2 : 1) : 1) === pg ? secHTML(s, g, i, pg) : "").join("");
   const prof = D.profile.trim() ? `<div class="sec prof-sec"><h3>${rich(D.profileTitle || "Profile")}</h3><p class="prof">${rich(D.profile)}</p></div>` : "";
   const page = pg => {
@@ -807,6 +816,48 @@ function moveItem(fromArr, fromI, toArr, toI, pg) {
   flash("Moved");
 }
 // click in preview → jump to the matching editor block
+/* ---------- drag the column divider to resize the sidebar ---------- */
+const SW_MIN = 110, SW_MAX = 240, SW_STD = 145;
+function swOf(L) { const v = Number(L && L.sw); return v >= SW_MIN && v <= SW_MAX ? Math.round(v) : SW_STD; }
+let sizing = null, lastDown = 0;
+document.getElementById("pages").addEventListener("pointerdown", ev => {
+  const vl = tgt(ev).closest(".vline"); if (!vl || ev.button !== 0) return;
+  const page = vl.closest(".page"); if (page.classList.contains("lay-one")) return;
+  ev.preventDefault(); ev.stopPropagation();
+  const now = Date.now();
+  if (now - lastDown < 400) { lastDown = 0; if (swOf(D.layout) !== SW_STD) { snapshot(); D.layout.sw = SW_STD; changed(true); flash("Sidebar back to the standard width"); } return; } // double-click
+  lastDown = now;
+  const r = page.getBoundingClientRect(), k = r.width / 595.28; // px per pt in the scaled preview
+  sizing = { k, left: r.left, right: r.right, right_side: page.classList.contains("lay-right"), tip: document.createElement("div"), x0: ev.clientX, moved: false, page };
+  vl.setPointerCapture(ev.pointerId);
+});
+function moveSizing(ev) {
+  if (!sizing) return;
+  if (!sizing.moved) { // start resizing only once the pointer actually moves
+    if (Math.abs(ev.clientX - sizing.x0) < 3) return;
+    sizing.moved = true; snapshot();
+    sizing.tip.className = "swtip"; sizing.page.appendChild(sizing.tip);
+    document.querySelectorAll("#pages .page").forEach(p => p.classList.add("sizing"));
+  }
+  const pt = sizing.right_side ? (sizing.right - ev.clientX) / sizing.k : (ev.clientX - sizing.left) / sizing.k;
+  let w = Math.round(pt - 48 - 12); // page margin 48pt, half the 24pt gutter
+  if (Math.abs(w - SW_STD) < 4) w = SW_STD; // snap to the standard width
+  w = Math.max(SW_MIN, Math.min(SW_MAX, w));
+  D.layout.sw = w;
+  document.querySelectorAll("#pages .page").forEach(p => p.style.setProperty("--sw", w + "pt"));
+  sizing.tip.textContent = w === SW_STD ? `${w} pt · standard` : `${w} pt`;
+  sizing.tip.style.left = sizing.right_side ? `calc(100% - ${w + 60}pt)` : `${w + 60}pt`;
+  const sl = document.querySelector('input[data-p="layout.sw"]'); if (sl) { sl.value = w; const o = document.getElementById("swv"); if (o) o.textContent = w; }
+}
+document.getElementById("pages").addEventListener("pointermove", moveSizing);
+const endSizing = () => {
+  if (!sizing) return;
+  const moved = sizing.moved; sizing.tip.remove(); sizing = null;
+  document.querySelectorAll("#pages .page").forEach(p => p.classList.remove("sizing"));
+  if (moved) { lastDown = 0; changed(true); } // re-render (image sizes, fit warning) and save
+};
+document.getElementById("pages").addEventListener("pointerup", endSizing);
+document.getElementById("pages").addEventListener("pointercancel", endSizing);
 document.getElementById("pages").addEventListener("click", ev => {
   const T = tgt(ev), el = T.closest("[data-d]"), prof = T.closest(".prof-sec"), top = T.closest(".top");
   let key = null;
@@ -890,6 +941,8 @@ function renderEditor() {
       <button class="btn small ${L.fonts === "clean" ? "on" : ""}" data-a="font" data-v="clean">Clean</button>
     </div>
     ${L.design === "blueprint" ? `<label class="chk"><input type="checkbox" data-p="layout.lines" ${L.lines ? "checked" : ""} data-rerender="1"> Show lines and dots</label>` : ""}
+    ${L.sidebar !== "none" ? `<label class="f">Sidebar width: <span id="swv">${swOf(L)}</span> pt <span style="opacity:.7">(or drag the divider line in the preview)</span></label>
+    <div class="row"><input type="range" min="${SW_MIN}" max="${SW_MAX}" step="1" data-p="layout.sw" value="${swOf(L)}" style="flex:1"><button class="btn small" data-a="swstd" ${swOf(L) === SW_STD ? "disabled" : ""}>Standard</button></div>` : ""}
     <label class="f">Pages</label>
     <div class="seg">
       <button class="btn small ${Number(L.pages) !== 2 ? "on" : ""}" data-a="pages" data-v="1">One page</button>
@@ -1028,6 +1081,7 @@ pE.addEventListener("input", ev => {
   let v = el.type === "checkbox" ? el.checked : el.type === "range" ? Number(el.value) : el.value;
   setP(p, v);
   if (p === "top.size") document.getElementById("szv").textContent = v;
+  if (p === "layout.sw") { const o = document.getElementById("swv"); if (o) o.textContent = v; }
   if (/(\.title|\.org|\.role)$/.test(p)) {
     const sub = el.closest(".sub"); const head = sub && sub.querySelector(".t");
     if (head) { const o = getP(p.replace(/\.(title|org|role)$/, "")); head.textContent = o.kind !== undefined ? (o.title || "Untitled section") : (o.org || o.role || "New entry"); }
@@ -1073,6 +1127,7 @@ pE.addEventListener("click", ev => {
   if (a === "lay") { snapshot(); D.layout.sidebar = b.dataset.v; return changed(true); }
   if (a === "font") { snapshot(); D.layout.fonts = b.dataset.v; return changed(true); }
   if (a === "hide") { snapshot(); const o = getP(b.dataset.path); o.hidden = !o.hidden; return changed(true); }
+  if (a === "swstd") { snapshot(); D.layout.sw = SW_STD; return changed(true); }
   if (a === "pages") { snapshot(); D.layout.pages = Number(b.dataset.v); return changed(true); }
   if (a === "pg") { snapshot(); const o = getP(b.dataset.path); o.p2 = !o.p2; return changed(true); }
   if (a === "den") { snapshot(); D.layout.density = b.dataset.v; return changed(true); }
