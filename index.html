@@ -194,6 +194,7 @@ textarea{resize:vertical;min-height:60px}
 /* lines & dots belong to Blueprint only */
 .page:not(.d-blueprint) .top::after,.page:not(.d-blueprint) .node,.page:not(.d-blueprint) .vline::before{display:none}
 .page .top,.page .cols{position:relative;z-index:1}
+.page .top{z-index:2} /* header (dots, badge) above the column divider */
 
 /* --- Solid sidebar --- */
 .page.d-sidebar::before{content:"";position:absolute;top:0;bottom:0;left:0;width:205pt;background:var(--bgc);z-index:0}
